@@ -3,24 +3,33 @@
 
 #include <string>
 #include <unordered_map>
+#include <queue>
+#include <vector>
 
-void encode(std::string& text) {
-	std::unordered_map<char, int> freq;
-	for (char ch : text) {
-		freq[ch]++;
+struct Node {
+	char ch;
+	int freq;
+	Node* left, * right;
+};
+
+struct comp
+{
+	bool operator()(Node* l, Node* r)
+	{
+		return l->freq > r->freq;
 	}
+};
 
-	std::cout << "\n Found characters frequency: ";
-	for (auto& it : freq) {
-		std::cout << "\n "<< it.first;
-		std::cout << " " << it.second;
-	}
+Node* addNode(char ch, int freq, Node* left, Node* right)
+{
+	Node* node = new Node();
 
+	node->ch = ch;
+	node->freq = freq;
+	node->left = left;
+	node->right = right;
 
-}
-
-void decode(std::string& text) {
-
+	return node;
 }
 
 #endif

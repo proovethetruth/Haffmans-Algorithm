@@ -6,10 +6,12 @@
 // Реализовать алгоритм Хаффмана. Дерево должно передаваться эффективно.
 // Программа должна уметь архивировать и разархивировать одиночные файлы.
 
+#include "Haffman Algorithm.h"
+#include "Haffman Algorithm.cpp"
+
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Haffman Algorithm.h"
 
 int main(int argc, char* argv[]) {
     if (!argv[1] || !argv[2] || argv[1] == 0 || argv[2] == 0) {
