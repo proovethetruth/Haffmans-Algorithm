@@ -23,19 +23,16 @@ void build_tree(std::string& text, std::string& name) {
 		freq[ch]++;
 	}
 
-	if (interface == 1) {
-		std::cout << "\n Found characters frequency: ";
-		for (auto& it : freq) {
-			std::cout << "\n " << it.first;
-			std::cout << " " << it.second;
-		}
+	std::cout << "\n Found characters frequency: ";
+	for (auto& it : freq) {
+		std::cout << "\n " << it.first;
+		std::cout << " " << it.second;
 	}
 
 
 	std::priority_queue<Node*, std::vector<Node*>, comp> pq;
-	for (auto pair : freq) {
+	for (auto pair : freq)
 		pq.push(addNode(pair.first, pair.second, nullptr, nullptr));
-	}
 
 	while (pq.size() != 1) {
 		Node* left = pq.top();
@@ -50,20 +47,17 @@ void build_tree(std::string& text, std::string& name) {
 	std::unordered_map<char, std::string> huffmanCode;
 	encode(root, "", huffmanCode);
 
-	if (interface == 1) {
-		std::cout << "\n\n Huffman Codes are :";
-		for (auto pair : huffmanCode)
-			std::cout << "\n " << pair.first << " " << pair.second;
-		std::cout << "\n\n Source text:\n" << text;
-	}
+	std::cout << "\n\n Huffman Codes are :";
+	for (auto pair : huffmanCode)
+		std::cout << "\n " << pair.first << " " << pair.second;
+	std::cout << "\n\n Source text:\n" << text;
 
 	std::string str = "";
 	for (char ch : text) {
 		str += huffmanCode[ch];
 	}
 
-	if (interface == 1)
-		std::cout << "\n Binary code: " << str;
+	std::cout << "\n Binary code: " << str;
 
 	std::string base_name;
 	for (int i = 0; i < 4; i++)
@@ -74,13 +68,12 @@ void build_tree(std::string& text, std::string& name) {
 	str = bin_to_hex(outfile, str);
 	reverse(str.begin(), str.end());
 
-	if (interface == 1)
-		std::cout << "\n Hex code: " << str;
+	std::cout << "\n Hex code: " << str;
 	outfile << str;
 	outfile.close();
 
-	if (interface == 1)
-		std::cout << "\n Compression effectivness: " << (int)(((float)text.size() / (float)str.size()) * 100) / 100. << std::endl;
+	std::cout << "\n Compression effectivness: " << 
+		(int)(((float)text.size() / (float)str.size()) * 100) / 100. << std::endl;
 
 	//base_name = name + "'s tree.txt";
 	//std::fstream outfile(base_name);

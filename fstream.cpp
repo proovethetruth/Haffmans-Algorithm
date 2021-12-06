@@ -7,7 +7,7 @@ int parse_file(std::string& name, std::string& text) {
     std::string tmp = "";
     if (myfile.is_open()) {
         while (getline(myfile, tmp))
-            text += tmp + "\n";
+            text += tmp;
         myfile.close();
     }
     else

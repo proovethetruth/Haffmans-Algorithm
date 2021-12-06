@@ -3,11 +3,11 @@
 
 //void decode_tree(std::string& text, std::string& tree_name) {
 //
-//	//int index = -1;
-//	//std::cout << "\n Decoded string is: \n";
-//	//while (index < (int)text.size() - 2) {
-//	//	decode(root, index, text);
-//	//}
+//	int index = -1;
+//	std::cout << "\n Decoded string is: \n";
+//	while (index < (int)text.size() - 2) {
+//		decode(root, index, text);
+//	}
 //}
 
 //void decode(Node* root, int& index, std::string str) {
