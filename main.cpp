@@ -7,10 +7,7 @@
 // Программа должна уметь архивировать и разархивировать одиночные файлы.
 
 #include "Haffman Algorithm.h"
-#include "Haffman Algorithm.cpp"
-
 #include <iostream>
-#include <string>
 #include <fstream>
 
 int main(int argc, char* argv[]) {
@@ -20,21 +17,17 @@ int main(int argc, char* argv[]) {
     }
 
     std::string name(argv[1]);
-    std::ifstream myfile(name);
     std::string text;
-
-    if (myfile.is_open()) {
-        std::cout << "\n Input text: ";
-        while (getline(myfile, text))
-            std::cout << text << '\n';
-        myfile.close();
-    }
-    else
+    if (!parse_file(name, text)) {
         std::cout << "\n Unable to open file ";
+        return -2;
+    }
+
+    std::cout << "\n Input text: " << text;
 
     if (strcmp(argv[2], "-en") == 0)
-        encode(text);
-    if (strcmp(argv[2], "-de") == 0)
-        encode(text);
+        build_tree(text, name);
+    /*if (strcmp(argv[2], "-de") == 0)
+        decode_tree(text, name);*/
 	return 0;
 }

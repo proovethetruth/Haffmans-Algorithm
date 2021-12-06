@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Haffman Algorithm.cpp" />
+    <ClCompile Include="decode.cpp" />
+    <ClCompile Include="encode.cpp" />
+    <ClCompile Include="fstream.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

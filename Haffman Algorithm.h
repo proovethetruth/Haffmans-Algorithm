@@ -3,8 +3,6 @@
 
 #include <string>
 #include <unordered_map>
-#include <queue>
-#include <vector>
 
 struct Node {
 	char ch;
@@ -20,16 +18,11 @@ struct comp
 	}
 };
 
-Node* addNode(char ch, int freq, Node* left, Node* right)
-{
-	Node* node = new Node();
+Node* addNode(char ch, int freq, Node* left, Node* right);
 
-	node->ch = ch;
-	node->freq = freq;
-	node->left = left;
-	node->right = right;
+int parse_file(std::string& name, std::string& text);
 
-	return node;
-}
+void build_tree(std::string& text, std::string& name);
+void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);
 
 #endif
