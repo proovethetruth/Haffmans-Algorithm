@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
         std::cout << "\n Usage: ";
         return -1;
     }
+
     std::cout << "\n\t HAFFMAN'S CODE";
 
     std::string name(argv[1]);

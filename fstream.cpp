@@ -1,6 +1,5 @@
 
 #include "Haffman Algorithm.h"
-#include <iostream>
 #include <fstream>
 
 int parse_file(std::string& name, std::string& text) {

@@ -23,11 +23,14 @@ void build_tree(std::string& text, std::string& name) {
 		freq[ch]++;
 	}
 
-	std::cout << "\n Found characters frequency: ";
-	for (auto& it : freq) {
-		std::cout << "\n " << it.first;
-		std::cout << " " << it.second;
+	if (interface == 1) {
+		std::cout << "\n Found characters frequency: ";
+		for (auto& it : freq) {
+			std::cout << "\n " << it.first;
+			std::cout << " " << it.second;
+		}
 	}
+
 
 	std::priority_queue<Node*, std::vector<Node*>, comp> pq;
 	for (auto pair : freq) {
@@ -47,18 +50,20 @@ void build_tree(std::string& text, std::string& name) {
 	std::unordered_map<char, std::string> huffmanCode;
 	encode(root, "", huffmanCode);
 
-	std::cout << "\n\n Huffman Codes are :";
-	for (auto pair : huffmanCode) {
-		std::cout << "\n " << pair.first << " " << pair.second;
+	if (interface == 1) {
+		std::cout << "\n\n Huffman Codes are :";
+		for (auto pair : huffmanCode)
+			std::cout << "\n " << pair.first << " " << pair.second;
+		std::cout << "\n\n Source text:\n" << text;
 	}
-
-	std::cout << "\n\n Source text:\n" << text;
 
 	std::string str = "";
 	for (char ch : text) {
 		str += huffmanCode[ch];
 	}
-	std::cout << "\n Binary code: " << str;
+
+	if (interface == 1)
+		std::cout << "\n Binary code: " << str;
 
 	std::string base_name;
 	for (int i = 0; i < 4; i++)
@@ -68,11 +73,14 @@ void build_tree(std::string& text, std::string& name) {
 
 	str = bin_to_hex(outfile, str);
 	reverse(str.begin(), str.end());
-	std::cout << "\n Hex code: " << str;
+
+	if (interface == 1)
+		std::cout << "\n Hex code: " << str;
 	outfile << str;
 	outfile.close();
 
-	std::cout << "\n Compression effectivness: " << (int)(((float)text.size() / (float)str.size()) * 100) / 100. << std::endl;
+	if (interface == 1)
+		std::cout << "\n Compression effectivness: " << (int)(((float)text.size() / (float)str.size()) * 100) / 100. << std::endl;
 
 	//base_name = name + "'s tree.txt";
 	//std::fstream outfile(base_name);
