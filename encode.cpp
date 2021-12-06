@@ -4,6 +4,7 @@
 #include <fstream>
 #include <queue>
 #include <bitset>
+#include <sstream>
 
 Node* addNode(char ch, int freq, Node* left, Node* right) {
 	Node* node = new Node();
@@ -58,24 +59,14 @@ void build_tree(std::string& text, std::string& name) {
 	}
 
 	std::string base_name;
+	for (int i = 0; i < 4; i++)
+		name.pop_back();
 	base_name = name + " - encoded.txt";
 	std::ofstream outfile(base_name);
 
-	while (str.size() % 8 != 0) {
-		str = "0" + str;
-	}
-
+	str = bin_to_hex(outfile, str);
 	reverse(str.begin(), str.end());
-	std::bitset<4> set;
-	std::string tmp;
-	while (str.size() != 0) {
-		for (std::size_t i = 0; i < 4; i++) {
-			set[i] = str[i] - '0';
-			std::cout << set[i];
-		}
-		outfile << " - " << std::hex << set.to_ulong() << std::endl;
-		str.erase(0, 4);
-	}
+	outfile << str;
 	outfile.close();
 
 	//base_name = name + "'s tree.txt";
@@ -96,4 +87,27 @@ void encode(Node* root, std::string str, std::unordered_map<char, std::string>& 
 
 	encode(root->left, str + "0", huffmanCode);
 	encode(root->right, str + "1", huffmanCode);
+}
+
+std::string bin_to_hex(std::ofstream& file, std::string& str) {
+	std::stringstream tmp;
+
+	while (str.size() % 4 != 0) {
+		str = "0" + str;
+	}
+	reverse(str.begin(), str.end());
+
+	std::bitset<4> set;
+	std::cout << "\n";
+	while (str.size() != 0) {
+		for (std::size_t i = 0; i < 4; i++) {
+			set[i] = str[i] - '0';
+			std::cout << set[i];
+		}
+		std::cout << " - ";
+		tmp << std::hex << set.to_ulong();
+		std::cout << " - " << std::hex << set.to_ulong() << std::endl;
+		str.erase(0, 4);
+	}
+	return tmp.str();
 }
