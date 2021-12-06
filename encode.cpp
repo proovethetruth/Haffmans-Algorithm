@@ -19,9 +19,8 @@ Node* addNode(char ch, int freq, Node* left, Node* right) {
 
 void build_tree(std::string& text, std::string& name) {
 	std::unordered_map<char, int> freq;
-	for (char ch : text) {
+	for (char ch : text)
 		freq[ch]++;
-	}
 
 	std::cout << "\n Found characters frequency: ";
 	for (auto& it : freq) {
@@ -53,9 +52,8 @@ void build_tree(std::string& text, std::string& name) {
 	std::cout << "\n\n Source text:\n" << text;
 
 	std::string str = "";
-	for (char ch : text) {
+	for (char ch : text)
 		str += huffmanCode[ch];
-	}
 
 	std::cout << "\n Binary code: " << str;
 
@@ -75,11 +73,10 @@ void build_tree(std::string& text, std::string& name) {
 	std::cout << "\n Compression effectivness: " << 
 		(int)(((float)text.size() / (float)str.size()) * 100) / 100. << std::endl;
 
-	//base_name = name + "'s tree.txt";
-	//std::fstream outfile(base_name);
-	//outfile.open();
-	//save_tree(outfile, root);
-	//outfile.close();
+	base_name = name + "'s tree.txt";
+	std::ofstream outfile2(base_name);
+	writeBinaryTree(outfile2, root);
+	outfile2.close();
 }
 
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode) {
@@ -112,4 +109,14 @@ std::string bin_to_hex(std::ofstream& file, std::string& str) {
 		str.erase(0, 4);
 	}
 	return tmp.str();
+}
+
+void writeBinaryTree(std::ofstream& out, Node* p) {
+	if (p == NULL) {
+		out << "#";
+		return;
+	}
+	out << p->ch;
+	writeBinaryTree(out, p->left);
+	writeBinaryTree(out, p->right);
 }

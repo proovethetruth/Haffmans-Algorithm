@@ -10,9 +10,25 @@
 #include <iostream>
 #include <fstream>
 
+int check_task(char* argv[]) {
+    if (!argv[1] || !argv[2] || argv[1] == 0 || argv[2] == 0)
+        return 0;
+    else {
+        if (strcmp(argv[2], "-en") == 0 || strcmp(argv[2], "-encode") == 0)
+            return 1;
+        else {
+            if ((strcmp(argv[2], "-de") == 0 || strcmp(argv[2], "-decode") == 0) && argv[3] != NULL)
+                return -1;
+            else
+                return 0;
+        }
+    }
+}
+
 int main(int argc, char* argv[]) {
-    if (!argv[1] || !argv[2] || argv[1] == 0 || argv[2] == 0) {
-        std::cout << "\n Usage: ";
+    int task_id;
+    if ((task_id = check_task(argv)) == 0) {
+        std::cout << "\n Usage: HaffmansAlgorithm <filename> [-en | -encode] [-de | -decode] <tree_filename>\n";
         return -1;
     }
 
@@ -25,7 +41,7 @@ int main(int argc, char* argv[]) {
         return -2;
     }
 
-    if (strcmp(argv[2], "-en") == 0)
+    if (task_id == 1)
         build_tree(text, name);
     /*if (strcmp(argv[2], "-de") == 0)
         decode_tree(text, name);*/

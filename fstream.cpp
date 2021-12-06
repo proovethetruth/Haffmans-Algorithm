@@ -3,7 +3,7 @@
 #include <fstream>
 
 int parse_file(std::string& name, std::string& text) {
-    std::ifstream myfile(name);
+    std::fstream myfile(name);
     std::string tmp = "";
     if (myfile.is_open()) {
         while (getline(myfile, tmp))
