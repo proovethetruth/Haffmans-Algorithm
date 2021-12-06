@@ -23,7 +23,7 @@ void build_tree(std::string& text, std::string& name) {
 		freq[ch]++;
 	}
 
-	std::cout << "\n\n Found characters frequency: ";
+	std::cout << "\n Found characters frequency: ";
 	for (auto& it : freq) {
 		std::cout << "\n " << it.first;
 		std::cout << " " << it.second;
@@ -42,7 +42,6 @@ void build_tree(std::string& text, std::string& name) {
 
 		pq.push(addNode('\0', (left->freq + right->freq), left, right));
 	}
-
 	Node* root = pq.top();
 
 	std::unordered_map<char, std::string> huffmanCode;
@@ -53,10 +52,13 @@ void build_tree(std::string& text, std::string& name) {
 		std::cout << "\n " << pair.first << " " << pair.second;
 	}
 
+	std::cout << "\n\n Source text:\n" << text;
+
 	std::string str = "";
 	for (char ch : text) {
 		str += huffmanCode[ch];
 	}
+	std::cout << "\n Binary code: " << str;
 
 	std::string base_name;
 	for (int i = 0; i < 4; i++)
@@ -66,8 +68,11 @@ void build_tree(std::string& text, std::string& name) {
 
 	str = bin_to_hex(outfile, str);
 	reverse(str.begin(), str.end());
+	std::cout << "\n Hex code: " << str;
 	outfile << str;
 	outfile.close();
+
+	std::cout << "\n Compression effectivness: " << (int)(((float)text.size() / (float)str.size()) * 100) / 100. << std::endl;
 
 	//base_name = name + "'s tree.txt";
 	//std::fstream outfile(base_name);
@@ -98,15 +103,11 @@ std::string bin_to_hex(std::ofstream& file, std::string& str) {
 	reverse(str.begin(), str.end());
 
 	std::bitset<4> set;
-	std::cout << "\n";
 	while (str.size() != 0) {
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < 4; i++)
 			set[i] = str[i] - '0';
-			std::cout << set[i];
-		}
-		std::cout << " - ";
+
 		tmp << std::hex << set.to_ulong();
-		std::cout << " - " << std::hex << set.to_ulong() << std::endl;
 		str.erase(0, 4);
 	}
 	return tmp.str();

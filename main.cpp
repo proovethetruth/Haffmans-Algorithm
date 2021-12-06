@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
         std::cout << "\n Usage: ";
         return -1;
     }
+    std::cout << "\n\t HAFFMAN'S CODE";
 
     std::string name(argv[1]);
     std::string text;
@@ -22,8 +23,6 @@ int main(int argc, char* argv[]) {
         std::cout << "\n Unable to open file ";
         return -2;
     }
-
-    std::cout << "\n Input text: " << text;
 
     if (strcmp(argv[2], "-en") == 0)
         build_tree(text, name);

@@ -26,4 +26,5 @@ void build_tree(std::string& text, std::string& name);
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);
 std::string bin_to_hex(std::ofstream& file, std::string& str);
 
+
 #endif

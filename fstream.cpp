@@ -5,9 +5,10 @@
 
 int parse_file(std::string& name, std::string& text) {
     std::ifstream myfile(name);
-
+    std::string tmp = "";
     if (myfile.is_open()) {
-        while (getline(myfile, text));
+        while (getline(myfile, tmp))
+            text += tmp + "\n";
         myfile.close();
     }
     else
@@ -15,4 +16,3 @@ int parse_file(std::string& name, std::string& text) {
 
     return 1;
 }
-
