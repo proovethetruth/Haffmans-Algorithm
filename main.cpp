@@ -28,7 +28,7 @@ int check_task(char* argv[]) {
 int main(int argc, char* argv[]) {
     int task_id;
     if ((task_id = check_task(argv)) == 0) {
-        std::cout << "\n Usage: HaffmansAlgorithm <filename> [-en | -encode] [-de | -decode] <tree_filename>\n";
+        std::cout << "\n Usage: HaffmansAlgorithm <filename> [-en | -encode | -de | -decode]\n";
         return -1;
     }
 
