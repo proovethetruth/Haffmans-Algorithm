@@ -33,7 +33,7 @@ struct comp {
 // Utility Functions
 int check_task(char* argv[]);
 std::string gen_filename(std::string original);
-int parse_file(std::string& name, std::string& text);
+int parse_file(std::string& name, std::string& text, int task);
 float show_efficiency(float before, float after);
 void save_in_binary(std::string& str, std::ofstream& outfile);
 

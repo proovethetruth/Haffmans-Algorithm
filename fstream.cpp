@@ -3,18 +3,39 @@
 #include <fstream>
 #include <iostream>
 
-int parse_file(std::string& name, std::string& text) {
-    std::ifstream myfile(name);
+int parse_file(std::string& name, std::string& text, int task) {
     std::string tmp = "";
 
-    if (myfile.is_open()) {
-        while (getline(myfile, tmp))
-            text += tmp;
-        myfile.close();
+    if (task == 1) {
+        std::ifstream myfile(name);
+        if (myfile.is_open()) {
+            while (getline(myfile, tmp))
+                text += tmp;
+            myfile.close();
+        }
+        else
+            return 0;
     }
-    else
-        return 0;
+    else {
+        std::ifstream myfile(name, std::ios::binary);
+        if (myfile.is_open()) {
+            std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(myfile), {});
 
+            std::string str = "";
+            for (unsigned char j : buffer)
+                str += j;
+            std::cout << "\n STR: "<< str << "\n";
+
+            std::string tmp = "";
+            for (std::size_t i = 0; i < str.length() - 1; ++++i)
+                tmp += static_cast<char>(str[i] / 16 - str[i + 1]);
+                
+
+            std::cout << "\n tmp: " << tmp << "\n";
+        }
+        else
+            return 0;
+    }
     return 1;
 }
 
@@ -26,7 +47,7 @@ std::string gen_filename(std::string original) {
 }
 
 void save_in_binary(std::string& str, std::ofstream& outfile) {
-    //outfile << str;
+
     for (std::size_t i = 0; i < str.length() - 1; ++++i)
         outfile << static_cast<char>(str[i] * 16 + str[i + 1]);
 }
