@@ -13,6 +13,15 @@ struct Node {
 	Node(char val) {
 		ch = val;
 	}
+
+	Node(char ch, Node* left, Node* right) {
+		Node* node = new Node();
+
+		node->ch = ch;
+		node->freq = 0;
+		node->left = left;
+		node->right = right;
+	}
 };
 
 struct comp {
@@ -38,6 +47,6 @@ std::string bin_to_hex(std::string& str);
 void decode(Node* root, int& index, std::string str);
 
 void writeBinaryTree(Node* node, std::string& result);
-void readBinaryTree(std::ifstream& fin, Node*& p);
+Node readBinaryTree(std::string& str, int& index);
 
 #endif

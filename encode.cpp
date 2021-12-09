@@ -53,10 +53,14 @@ void build_tree(std::string& text, std::string& name) {
 	std::cout << "\n\n Source text:\n" << text << "\n";
 
 	std::ofstream outfile(gen_filename(name), std::ios_base::binary);
-
-	// ------------------------------------------------------------------------------- //
-
+	
 	std::string str = "";
+	writeBinaryTree(root, str);
+	std::cout << "\n Tree transcription: " << str;
+	str = str + "#";
+	save_in_binary(str, outfile);
+	str = "";
+
 	for (char ch : text)
 		str += huffmanCode[ch];
 
@@ -71,11 +75,6 @@ void build_tree(std::string& text, std::string& name) {
 	str = bin_to_hex(str);
 	std::cout << "\n Hex code: " << str;
 
-	save_in_binary(str, outfile);
-
-	writeBinaryTree(root, str = "");
-	std::cout << "\n Tree transcription: " << str;
-	str = "\n" + str;
 	save_in_binary(str, outfile);
 	outfile.close();
 

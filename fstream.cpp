@@ -26,6 +26,7 @@ std::string gen_filename(std::string original) {
 }
 
 void save_in_binary(std::string& str, std::ofstream& outfile) {
+    //outfile << str;
     for (std::size_t i = 0; i < str.length() - 1; ++++i)
         outfile << static_cast<char>(str[i] * 16 + str[i + 1]);
 }
@@ -41,15 +42,14 @@ void writeBinaryTree(Node* node, std::string& result) {
         writeBinaryTree(node->right, result);
     }
 }
-//
-//Node readBinaryTree(std::string& str) {
-//    if (str == 1) {
-//        return new Node(reader.ReadByte(), null, null);
-//    }
-//    else
-//    {
-//        Node leftChild = ReadNode(reader);
-//        Node rightChild = ReadNode(reader);
-//        return new Node(0, leftChild, rightChild);
-//    }
-//}
+
+Node readBinaryTree(std::string& str, int& index) {
+    if (str[index] == 1) {
+        return Node(str[++index], nullptr, nullptr);
+    }
+    else {
+        Node leftChild = readBinaryTree(str, ++index);
+        Node rightChild = readBinaryTree(str, ++index);
+        return Node('0', &leftChild, &rightChild);
+    }
+}

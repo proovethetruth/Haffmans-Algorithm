@@ -43,7 +43,11 @@ int main(int argc, char* argv[]) {
 
     if (task_id == 1)
         build_tree(text, name);
-    /*if (strcmp(argv[2], "-de") == 0)
-        decode_tree(text, name);*/
+    if (strcmp(argv[2], "-de") == 0) {
+        //int index = 0;
+        //std::string tree_transcription = "";
+        //for(int i = 0; text[i] !)
+        //readBinaryTree(text, index);
+    }
 	return 0;
 }
