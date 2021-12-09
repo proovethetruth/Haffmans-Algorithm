@@ -21,11 +21,11 @@ void decode(Node* root, int& index, std::string str)
 {
 	if (root == nullptr)
 		return;
+
 	if (!root->left && !root->right) {
 		std::cout << root->ch;
 		return;
 	}
-
 	index++;
 
 	if (str[index] == '0')

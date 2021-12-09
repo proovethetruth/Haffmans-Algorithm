@@ -50,6 +50,10 @@ void build_tree(std::string& text, std::string& name) {
 		std::cout << "\n " << pair.first << " " << pair.second;
 	std::cout << "\n\n Source text:\n" << text << "\n";
 
+
+	std::ofstream outfile(gen_filename(name), std::ios_base::binary);
+	writeBinaryTree(huffmanCode, outfile);
+
 	std::string str = "";
 	for (char ch : text)
 		str += huffmanCode[ch];
@@ -61,8 +65,6 @@ void build_tree(std::string& text, std::string& name) {
 	while (index < (int)str.size() - 1)
 		decode(root, index, str);
 	std::cout << "\n";
-
-	std::ofstream outfile(gen_filename(name), std::ios_base::binary);
 
 	str = bin_to_hex(str);
 	std::cout << "\n Hex code: " << str;
@@ -96,12 +98,10 @@ void encode(Node* root, std::string str, std::unordered_map<char, std::string>& 
 
 std::string bin_to_hex(std::string& str) {
 	reverse(str.begin(), str.end());
-
-	std::stringstream tmp;
-
 	while (str.size() % 4 != 0)
 		str = "0" + str;
 
+	std::stringstream tmp;
 	std::bitset<4> set;
 	while (str.size() != 0) {
 		for (std::size_t i = 0; i < 4; i++)
@@ -116,12 +116,27 @@ std::string bin_to_hex(std::string& str) {
 	return res;
 }
 
-void writeBinaryTree(std::ofstream& out, Node* curr) {
-	if (curr == NULL) {
-		out << "#";
-		return;
-	}
-	out << curr->ch;
-	writeBinaryTree(out, curr->left);
-	writeBinaryTree(out, curr->right);
+void writeBinaryTree(std::unordered_map<char, std::string>& huffmanCode, std::ofstream& outfile) {
+	std::string codes = "";
+	for (auto pair : huffmanCode)
+		codes += pair.second + " ";
+	codes.pop_back();
+	codes += "#";
+
+	for (std::size_t i = 0; i < codes.length() - 1; ++++i)
+		outfile << static_cast<char>(codes[i] * 16 + codes[i + 1]);
 }
+//
+//void read_tree(int bit_stream) {
+//	next_bit = bit_stream.read();
+//	if next_bit = "0" {
+//		root = new leaf
+//			// optionally read data associated with the leaf node
+//	}
+//	else {
+//		root = new internal node
+//			root.left = read_tree(bit_stream)
+//			root.right = read_tree(bit_stream)
+//	}
+//	return root;
+//}

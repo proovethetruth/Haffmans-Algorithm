@@ -36,7 +36,7 @@ std::string bin_to_hex(std::string& str);
 
 void decode(Node* root, int& index, std::string str);
 
-void writeBinaryTree(std::ofstream& out, Node* p);
+void writeBinaryTree(std::unordered_map<char, std::string>& huffmanCode, std::ofstream& outfile);
 void readBinaryTree(std::ifstream& fin, Node*& p);
 
 #endif
