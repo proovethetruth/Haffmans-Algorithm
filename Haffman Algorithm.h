@@ -26,6 +26,7 @@ int check_task(char* argv[]);
 std::string gen_filename(std::string original);
 int parse_file(std::string& name, std::string& text);
 float show_efficiency(float before, float after);
+void save_in_binary(std::string& str, std::ofstream& outfile);
 
 Node* addNode(char ch, int freq, Node* left, Node* right);
 
@@ -36,7 +37,7 @@ std::string bin_to_hex(std::string& str);
 
 void decode(Node* root, int& index, std::string str);
 
-void writeBinaryTree(std::unordered_map<char, std::string>& huffmanCode, std::ofstream& outfile);
+void writeBinaryTree(Node* node, std::string& result);
 void readBinaryTree(std::ifstream& fin, Node*& p);
 
 #endif

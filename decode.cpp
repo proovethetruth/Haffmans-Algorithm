@@ -2,23 +2,7 @@
 #include "Haffman Algorithm.h"
 #include <iostream>
 
-//void readBinaryTree(std::ifstream& in, Node*& p) {
-//	char val;
-//	if (!fscanf(in, "%d ", &val) || val == '#')
-//		return;
-//	
-//	p = new Node(val);
-//	readBinaryTree(in, p->left);
-//	readBinaryTree(in, p->right);
-//}
-//
-//void decode_tree(std::string& text, std::string& tree_name) {
-//
-//}
-
-
-void decode(Node* root, int& index, std::string str)
-{
+void decode(Node* root, int& index, std::string str) {
 	if (root == nullptr)
 		return;
 
