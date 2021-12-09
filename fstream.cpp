@@ -22,5 +22,5 @@ std::string gen_filename(std::string original) {
     for (int i = 0; i < 4; i++)
         original.pop_back();
 
-    return original + " - encoded.txt";
+    return original + " - encoded2.txt";
 }

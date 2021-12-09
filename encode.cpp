@@ -48,7 +48,7 @@ void build_tree(std::string& text, std::string& name) {
 	std::cout << "\n\n Huffman Codes are: ";
 	for (auto pair : huffmanCode)
 		std::cout << "\n " << pair.first << " " << pair.second;
-	std::cout << "\n\n Source text:\n" << text;
+	std::cout << "\n\n Source text:\n" << text << "\n";
 
 	std::string str = "";
 	for (char ch : text)
@@ -56,21 +56,22 @@ void build_tree(std::string& text, std::string& name) {
 
 	std::cout << "\n Binary code: " << str;
 
-	int index = -1;
 	std::cout << "\n\n Decoded text is:\n";
+	int index = -1;
 	while (index < (int)str.size() - 1)
 		decode(root, index, str);
+	std::cout << "\n";
 
-	std::ofstream outfile(gen_filename(name));
+	std::ofstream outfile(gen_filename(name), std::ios_base::binary);
 
-	str = bin_to_hex(outfile, str);
-	reverse(str.begin(), str.end());
-
+	str = bin_to_hex(str);
 	std::cout << "\n Hex code: " << str;
-	outfile << str;
+
+	for (std::size_t i = 0; i < str.length() - 1; ++++i)
+		outfile << static_cast<char>(str[i] * 16 + str[i + 1]);
 	outfile.close();
 
-	std::cout << "\n Algorithm efficiency: " << show_efficiency((float)text.size(), (float)str.size());
+	std::cout << "\n Algorithm efficiency: " << show_efficiency(text.size(), str.size()) << std::endl;
 
 	/*base_name = name + "'s tree.txt";
 	std::ofstream outfile2(base_name);
@@ -79,7 +80,7 @@ void build_tree(std::string& text, std::string& name) {
 }
 
 float show_efficiency(float before, float after) {
-	return (before / after * 100) / 100.;
+	return before / (after / 2);
 }
 
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode) {
@@ -93,11 +94,13 @@ void encode(Node* root, std::string str, std::unordered_map<char, std::string>& 
 	encode(root->right, str + "1", huffmanCode);
 }
 
-std::string bin_to_hex(std::ofstream& file, std::string& str) {
+std::string bin_to_hex(std::string& str) {
+	reverse(str.begin(), str.end());
+
 	std::stringstream tmp;
+
 	while (str.size() % 4 != 0)
 		str = "0" + str;
-	reverse(str.begin(), str.end());
 
 	std::bitset<4> set;
 	while (str.size() != 0) {
@@ -107,7 +110,10 @@ std::string bin_to_hex(std::ofstream& file, std::string& str) {
 		tmp << std::hex << set.to_ulong();
 		str.erase(0, 4);
 	}
-	return tmp.str();
+	std::string res = tmp.str();
+	reverse(res.begin(), res.end());
+
+	return res;
 }
 
 void writeBinaryTree(std::ofstream& out, Node* curr) {

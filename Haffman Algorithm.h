@@ -32,7 +32,7 @@ Node* addNode(char ch, int freq, Node* left, Node* right);
 // Huffman's Algorithm
 void build_tree(std::string& text, std::string& name);
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);
-std::string bin_to_hex(std::ofstream& file, std::string& str);
+std::string bin_to_hex(std::string& str);
 
 void decode(Node* root, int& index, std::string str);
 
