@@ -116,16 +116,6 @@ std::string bin_to_hex(std::string& str) {
 	return res;
 }
 
-void writeBinaryTree(std::unordered_map<char, std::string>& huffmanCode, std::ofstream& outfile) {
-	std::string codes = "";
-	for (auto pair : huffmanCode)
-		codes += pair.second + " ";
-	codes.pop_back();
-	codes += "#";
-
-	for (std::size_t i = 0; i < codes.length() - 1; ++++i)
-		outfile << static_cast<char>(codes[i] * 16 + codes[i + 1]);
-}
 //
 //void read_tree(int bit_stream) {
 //	next_bit = bit_stream.read();
