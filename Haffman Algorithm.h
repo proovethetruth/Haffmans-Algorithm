@@ -30,26 +30,26 @@ struct comp {
 	}
 };
 
-// Utility Functions
+// main.cpp
 int check_task(char* argv[]);
-std::string gen_filename(std::string original);
+
+// fstream.cpp
 int parse_file(std::string& name, std::string& text);
-int parse_binary_file(std::string& name, std::string& text);
-float show_efficiency(float before, float after);
-
+int parse_tree(std::string& name, std::string& text);
+int parse_binary_text(std::string& name, std::string& text);
+std::string gen_filename(std::string original);
 void save_in_binary(std::string& str, std::ofstream& outfile);
-void save_tree_in_binary(std::string& str, std::ofstream& outfile);
+void writeBinaryTree(Node* node, std::string& result);
+Node readBinaryTree(std::string& str, int& index);
 
+// encode.cpp
 Node* addNode(char ch, int freq, Node* left, Node* right);
-
-// Huffman's Algorithm
 void build_tree(std::string& text, std::string& name);
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);
 std::string bin_to_hex(std::string& str);
 
-void decode(Node* root, int& index, std::string str);
 
-void writeBinaryTree(Node* node, std::string& result);
-Node readBinaryTree(std::string& str, int& index);
+// decode.cpp
+void decode(Node* root, int& index, std::string str);
 
 #endif

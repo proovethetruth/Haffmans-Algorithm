@@ -45,10 +45,17 @@ int main(int argc, char* argv[]) {
         build_tree(text, name);
     }
     if (strcmp(argv[2], "-de") == 0) {
-        if (!parse_binary_file(name, text)) {
+        std::string tree;
+        if (!parse_tree(name, tree)) {
             std::cout << "\n Unable to open binary file ";
             return -2;
         }
+        std::cout << "\n" << tree;
+        if (!parse_binary_text(name, text)) {
+            std::cout << "\n Unable to open binary file ";
+            return -2;
+        }
+        std::cout << "\n" << text;
     }
 	return 0;
 }

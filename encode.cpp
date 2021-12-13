@@ -54,10 +54,10 @@ void build_tree(std::string& text, std::string& name) {
 	std::ofstream outfile(gen_filename(name), std::ios::binary);
 	std::string str = "";
 
-	//writeBinaryTree(root, str);
-	//std::cout << "\n Tree transcription: " << str;
-	//str = str + " ";
-	//outfile << str;
+	writeBinaryTree(root, str);
+	std::cout << "\n Tree transcription: " << str;
+	str = str + "#";
+	outfile << str;
 
 	str = "";
 	for (char ch : text)
@@ -75,12 +75,6 @@ void build_tree(std::string& text, std::string& name) {
 
 	save_in_binary(str, outfile);
 	outfile.close();
-
-	std::cout << "\n Algorithm efficiency: " << show_efficiency(text.size(), str.size()) << std::endl;
-}
-
-float show_efficiency(float before, float after) {
-	return before / (after / 2);
 }
 
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode) {

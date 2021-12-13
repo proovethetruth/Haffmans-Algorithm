@@ -2,7 +2,9 @@
 #include "Haffman Algorithm.h"
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <sstream>
+
 
 int parse_file(std::string& name, std::string& text) {
     std::string tmp = "";
@@ -17,17 +19,39 @@ int parse_file(std::string& name, std::string& text) {
     return 1;
 }
 
-int parse_binary_file(std::string& name, std::string& text) {
+int parse_tree(std::string& name, std::string& text) {
     std::string tmp = "";
     std::ifstream myfile(name, std::ios::binary);
     if (myfile.is_open()) {
         while (getline(myfile, tmp))
             text += tmp;
         myfile.close();
+        tmp = "";
+        for (int i = 0; text[i] != '#'; i++)
+            tmp += text[i];
+        text = tmp;
     }
     else
         return 0;
     return 1;
+}
+
+int parse_binary_text(std::string& name, std::string& text) {
+    std::ifstream myfile(name, std::ios::binary);
+
+    unsigned int tmp = 0;
+    std::stringstream input;
+    if (myfile.is_open()) {
+        while (tmp != '#')
+            tmp = myfile.get();
+        while (tmp != 'ff') {
+            tmp = myfile.get();
+            input << std::hex << tmp;
+        }
+        text = input.str();
+    }
+    else
+        return 0;
 }
 
 std::string gen_filename(std::string original) {
