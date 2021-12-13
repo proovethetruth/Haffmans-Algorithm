@@ -51,13 +51,12 @@ void build_tree(std::string& text, std::string& name) {
 
 	std::cout << "\n\n Source text:\n" << text << "\n";
 
-	//std::ofstream outfile(gen_filename(name), std::ios_base::binary);
-	std::ofstream outfile(gen_filename(name));
-
+	std::ofstream outfile(gen_filename(name), std::ios::binary);
 	std::string str = "";
-	writeBinaryTree(root, str);
-	std::cout << "\n Tree transcription: " << str;
-	str = str + " ";
+
+	//writeBinaryTree(root, str);
+	//std::cout << "\n Tree transcription: " << str;
+	//str = str + " ";
 	//outfile << str;
 
 	str = "";
@@ -71,18 +70,11 @@ void build_tree(std::string& text, std::string& name) {
 	while (index < (int)str.size() - 1)
 		decode(root, index, str);
 
-	// str = bin_to_hex(str);
+	str = bin_to_hex(str);
 	std::cout << "\n\n Hex code: " << str;
 
 	save_in_binary(str, outfile);
 	outfile.close();
-
-	std::ifstream infile("input1 - encoded.txt", std::fstream::in);
-
-	std::cout << "\n READ: ";
-	std::string a;
-	infile >> a;
-	std::cout <<  a;
 
 	std::cout << "\n Algorithm efficiency: " << show_efficiency(text.size(), str.size()) << std::endl;
 }
@@ -119,5 +111,7 @@ std::string bin_to_hex(std::string& str) {
 	std::string res = tmp.str();
 	reverse(res.begin(), res.end());
 
+	if (res.length() % 2 != 0)
+		res.insert(0, "0");
 	return res;
 }

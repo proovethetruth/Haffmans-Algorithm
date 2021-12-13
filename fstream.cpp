@@ -38,18 +38,16 @@ std::string gen_filename(std::string original) {
 }
 
 void save_in_binary(std::string& str, std::ofstream& outfile) {
-    //std::basic_string<uint8_t> bytes;
-    //for (size_t i = 0; i < str.length(); i += 2) {
-    //    uint16_t byte;
-    //    std::string nextbyte = str.substr(i, 2);
-    //    std::istringstream(nextbyte) >> std::hex >> byte;
+    char buf[3];
+    buf[2] = 0;
 
-    //    bytes.push_back(static_cast<uint8_t>(byte));
-    //}
-    //std::string result(begin(bytes), end(bytes));
-    outfile << str;
-    //for (std::size_t i = 0; i < str.length() - 1; ++++i)
-    //    outfile << static_cast<char>(str[i] + str[i + 1]);
+    std::stringstream input(str);
+    input.flags(std::ios_base::hex);
+    while (input) {
+        input >> buf[0] >> buf[1];
+        long val = strtol(buf, nullptr, 16);
+        outfile << static_cast<unsigned char>(val & 0xff);
+    }
 }
 
 void writeBinaryTree(Node* node, std::string& result) {
