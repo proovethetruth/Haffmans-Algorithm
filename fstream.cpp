@@ -2,40 +2,31 @@
 #include "Haffman Algorithm.h"
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
-int parse_file(std::string& name, std::string& text, int task) {
+int parse_file(std::string& name, std::string& text) {
     std::string tmp = "";
-
-    if (task == 1) {
-        std::ifstream myfile(name);
-        if (myfile.is_open()) {
-            while (getline(myfile, tmp))
-                text += tmp;
-            myfile.close();
-        }
-        else
-            return 0;
+    std::ifstream myfile(name);
+    if (myfile.is_open()) {
+        while (getline(myfile, tmp))
+            text += tmp;
+        myfile.close();
     }
-    else {
-        std::ifstream myfile(name, std::ios::binary);
-        if (myfile.is_open()) {
-            std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(myfile), {});
+    else
+        return 0;
+    return 1;
+}
 
-            std::string str = "";
-            for (unsigned char j : buffer)
-                str += j;
-            std::cout << "\n STR: "<< str << "\n";
-
-            std::string tmp = "";
-            for (std::size_t i = 0; i < str.length() - 1; ++++i)
-                tmp += static_cast<char>(str[i] / 16 - str[i + 1]);
-                
-
-            std::cout << "\n tmp: " << tmp << "\n";
-        }
-        else
-            return 0;
+int parse_binary_file(std::string& name, std::string& text) {
+    std::string tmp = "";
+    std::ifstream myfile(name, std::ios::binary);
+    if (myfile.is_open()) {
+        while (getline(myfile, tmp))
+            text += tmp;
+        myfile.close();
     }
+    else
+        return 0;
     return 1;
 }
 
@@ -47,9 +38,18 @@ std::string gen_filename(std::string original) {
 }
 
 void save_in_binary(std::string& str, std::ofstream& outfile) {
+    //std::basic_string<uint8_t> bytes;
+    //for (size_t i = 0; i < str.length(); i += 2) {
+    //    uint16_t byte;
+    //    std::string nextbyte = str.substr(i, 2);
+    //    std::istringstream(nextbyte) >> std::hex >> byte;
 
-    for (std::size_t i = 0; i < str.length() - 1; ++++i)
-        outfile << static_cast<char>(str[i] * 16 + str[i + 1]);
+    //    bytes.push_back(static_cast<uint8_t>(byte));
+    //}
+    //std::string result(begin(bytes), end(bytes));
+    outfile << str;
+    //for (std::size_t i = 0; i < str.length() - 1; ++++i)
+    //    outfile << static_cast<char>(str[i] + str[i + 1]);
 }
 
 void writeBinaryTree(Node* node, std::string& result) {

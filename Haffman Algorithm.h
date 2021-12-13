@@ -33,9 +33,12 @@ struct comp {
 // Utility Functions
 int check_task(char* argv[]);
 std::string gen_filename(std::string original);
-int parse_file(std::string& name, std::string& text, int task);
+int parse_file(std::string& name, std::string& text);
+int parse_binary_file(std::string& name, std::string& text);
 float show_efficiency(float before, float after);
+
 void save_in_binary(std::string& str, std::ofstream& outfile);
+void save_tree_in_binary(std::string& str, std::ofstream& outfile);
 
 Node* addNode(char ch, int freq, Node* left, Node* right);
 

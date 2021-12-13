@@ -37,23 +37,18 @@ int main(int argc, char* argv[]) {
     std::string name(argv[1]);
     std::string text;
 
-    if (!parse_file(name, text, task_id)) {
-        std::cout << "\n Unable to open file ";
-        return -2;
-    }
-
     if (task_id == 1) {
+        if (!parse_file(name, text)) {
+            std::cout << "\n Unable to open file ";
+            return -2;
+        }
         build_tree(text, name);
     }
     if (strcmp(argv[2], "-de") == 0) {
-
-        //std::ifstream iFile(name, std::ios::binary | std::ios::in);
-        //iFile.read(&len, sizeof(size_t));
-        //char* temp = new char[len + 1];
-        //iFile.read(temp, len);
-        //temp[len] = '\0';
-        //Name = temp;
-        //delete[] temp;
+        if (!parse_binary_file(name, text)) {
+            std::cout << "\n Unable to open binary file ";
+            return -2;
+        }
     }
 	return 0;
 }

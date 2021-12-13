@@ -49,18 +49,18 @@ void build_tree(std::string& text, std::string& name) {
 	for (auto pair : huffmanCode)
 		std::cout << "\n " << pair.first << " " << pair.second;
 
-	std::cout << "\n huffmanCode: " << huffmanCode[0];
 	std::cout << "\n\n Source text:\n" << text << "\n";
 
-	std::ofstream outfile(gen_filename(name), std::ios_base::binary);
-	
+	//std::ofstream outfile(gen_filename(name), std::ios_base::binary);
+	std::ofstream outfile(gen_filename(name));
+
 	std::string str = "";
 	writeBinaryTree(root, str);
 	std::cout << "\n Tree transcription: " << str;
-	str = str + "#";
-	save_in_binary(str, outfile);
-	str = "";
+	str = str + " ";
+	//outfile << str;
 
+	str = "";
 	for (char ch : text)
 		str += huffmanCode[ch];
 
@@ -70,13 +70,19 @@ void build_tree(std::string& text, std::string& name) {
 	int index = -1;
 	while (index < (int)str.size() - 1)
 		decode(root, index, str);
-	std::cout << "\n";
 
-	str = bin_to_hex(str);
-	std::cout << "\n Hex code: " << str;
+	// str = bin_to_hex(str);
+	std::cout << "\n\n Hex code: " << str;
 
 	save_in_binary(str, outfile);
 	outfile.close();
+
+	std::ifstream infile("input1 - encoded.txt", std::fstream::in);
+
+	std::cout << "\n READ: ";
+	std::string a;
+	infile >> a;
+	std::cout <<  a;
 
 	std::cout << "\n Algorithm efficiency: " << show_efficiency(text.size(), str.size()) << std::endl;
 }
