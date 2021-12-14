@@ -69,10 +69,10 @@ void save_in_binary(std::string& str, std::ofstream& outfile) {
 
     std::stringstream input(str);
     input.flags(std::ios_base::hex);
-    while (input) {
-        input >> buf[0] >> buf[1];
+    while (input >> buf[0] >> buf[1]) {
         long val = strtol(buf, nullptr, 16);
         outfile << static_cast<unsigned char>(val & 0xff);
+        std::cout << "\n " << static_cast<unsigned char>(val & 0xff);
     }
 }
 
