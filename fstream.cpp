@@ -44,8 +44,10 @@ int parse_binary_text(std::string& name, std::string& text) {
     if (myfile.is_open()) {
         while (tmp != '#')
             tmp = myfile.get();
-        while (tmp != 'ff') {
+        while (input) {
             tmp = myfile.get();
+            if (tmp == UINT_MAX)
+                break;
             input << std::hex << tmp;
         }
         text = input.str();
@@ -86,13 +88,13 @@ void writeBinaryTree(Node* node, std::string& result) {
     }
 }
 
-Node readBinaryTree(std::string& str, int& index) {
-    if (str[index] == 1) {
-        return Node(str[++index], nullptr, nullptr);
+Node* readBinaryTree(std::string& str, int& index) {
+    if (str[index] == '1') {
+        return addNode(str[++index], 0, nullptr, nullptr);
     }
     else {
-        Node leftChild = readBinaryTree(str, ++index);
-        Node rightChild = readBinaryTree(str, ++index);
-        return Node('0', &leftChild, &rightChild);
+        Node* leftChild = readBinaryTree(str, ++index);
+        Node* rightChild = readBinaryTree(str, ++index);
+        return addNode('0', 0, leftChild, rightChild);
     }
 }

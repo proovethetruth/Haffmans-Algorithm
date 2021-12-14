@@ -65,11 +65,6 @@ void build_tree(std::string& text, std::string& name) {
 
 	std::cout << "\n Binary code: " << str;
 
-	std::cout << "\n\n Decoded text is:\n";
-	int index = -1;
-	while (index < (int)str.size() - 1)
-		decode(root, index, str);
-
 	str = bin_to_hex(str);
 	std::cout << "\n\n Hex code: " << str;
 
