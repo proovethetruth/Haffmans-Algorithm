@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
         int index = 0;
         Node* root = readBinaryTree(tree, index);
 
-        std::cout << "\n\n Decoded text is:\n";
+        std::cout << "\n\n Decoded texts:\n";
         index = -1;
         while (index < (int)text.size() - 1)
             decode(root, index, text);

@@ -44,7 +44,7 @@ int parse_binary_text(std::string& name, std::string& text) {
     if (myfile.is_open()) {
         while (tmp != '#')
             tmp = myfile.get();
-        while (input) {
+        while (!myfile.eof()) {
             tmp = myfile.get();
             if (tmp == UINT_MAX)
                 break;
@@ -72,7 +72,6 @@ void save_in_binary(std::string& str, std::ofstream& outfile) {
     while (input >> buf[0] >> buf[1]) {
         long val = strtol(buf, nullptr, 16);
         outfile << static_cast<unsigned char>(val & 0xff);
-        std::cout << "\n " << static_cast<unsigned char>(val & 0xff);
     }
 }
 
