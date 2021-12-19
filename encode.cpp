@@ -54,22 +54,41 @@ void build_tree(std::string& text, std::string& name) {
 	std::ofstream outfile(gen_filename(name), std::ios::binary);
 	std::string str = "";
 
-	writeBinaryTree(root, str);
-	std::cout << "\n Tree transcription: " << str;
-	str = str + "#";
-	outfile << str;
-
-	str = "";
-	for (char ch : text)
+	for (char ch : text) 
 		str += huffmanCode[ch];
+
+	for(int i = 0; i < str.size(); i++)
+		WriteBit(str[i] - '0', outfile);
+	Flush_Bits(outfile);
 
 	std::cout << "\n Binary code: " << str;
 
-	str = bin_to_hex(str);
-	std::cout << "\n\n Hex code: " << str;
-
-	save_in_binary(str, outfile);
+	str = "";
+	writeBinaryTree(root, str);
+	std::cout << "\n Tree transcription: " << str;
+	str = "#" + str;
+	outfile << str;
 	outfile.close();
+}
+
+int current_bit = 0;
+void WriteBit(int bit, std::ostream& outfile) {
+	static unsigned char bit_buffer;
+	bit_buffer <<= 1; 
+	if (bit)
+		bit_buffer |= 0x1;
+
+	current_bit++;
+	if (current_bit == 8) {
+		outfile.write((char*)&bit_buffer, sizeof(bit_buffer));
+		current_bit = 0;
+		bit_buffer = 0;
+	}
+}
+
+void Flush_Bits(std::ostream& outfile) {
+	while (current_bit)
+		WriteBit(0, outfile);
 }
 
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode) {
@@ -81,26 +100,4 @@ void encode(Node* root, std::string str, std::unordered_map<char, std::string>& 
 
 	encode(root->left, str + "0", huffmanCode);
 	encode(root->right, str + "1", huffmanCode);
-}
-
-std::string bin_to_hex(std::string& str) {
-	reverse(str.begin(), str.end());
-	while (str.size() % 4 != 0)
-		str = "0" + str;
-
-	std::stringstream tmp;
-	std::bitset<4> set;
-	while (str.size() != 0) {
-		for (std::size_t i = 0; i < 4; i++)
-			set[i] = str[i] - '0';
-
-		tmp << std::hex << set.to_ulong();
-		str.erase(0, 4);
-	}
-	std::string res = tmp.str();
-	reverse(res.begin(), res.end());
-
-	if (res.length() % 2 != 0)
-		res.insert(0, "0");
-	return res;
 }

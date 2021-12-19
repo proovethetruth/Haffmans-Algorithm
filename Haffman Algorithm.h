@@ -46,11 +46,11 @@ Node* readBinaryTree(std::string& str, int& index);
 Node* addNode(char ch, int freq, Node* left, Node* right);
 void build_tree(std::string& text, std::string& name);
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);
-std::string bin_to_hex(std::string& str);
 
 
 // decode.cpp
 void decode(Node* root, int& index, std::string str);
-std::string hex_to_bin(std::string& sHex);
 
+void WriteBit(int bit, std::ostream& outfile);
+void Flush_Bits(std::ostream& outfile);
 #endif

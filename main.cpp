@@ -45,25 +45,23 @@ int main(int argc, char* argv[]) {
         build_tree(text, name);
     }
     if (strcmp(argv[2], "-de") == 0) {
+        if (!parse_binary_text(name, text)) {
+            std::cout << "\n Unable to open binary file ";
+            return -2;
+        }
+        std::cout << "\n Binary text: " << text;
+
         std::string tree;
         if (!parse_tree(name, tree)) {
             std::cout << "\n Unable to open binary file ";
             return -2;
         }
         std::cout << "\n Tree origin: " << tree;
-        if (!parse_binary_text(name, text)) {
-            std::cout << "\n Unable to open binary file ";
-            return -2;
-        }
-        std::cout << "\n Hex text: " << text;
-
-        text = hex_to_bin(text);
-        std::cout << "\n Binary text: " << text;
 
         int index = 0;
         Node* root = readBinaryTree(tree, index);
 
-        std::cout << "\n\n Decoded texts:\n";
+        std::cout << "\n\n Decoded text:\n";
         index = -1;
         while (index < (int)text.size() - 1)
             decode(root, index, text);

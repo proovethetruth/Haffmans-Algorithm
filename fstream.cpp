@@ -27,8 +27,10 @@ int parse_tree(std::string& name, std::string& text) {
             text += tmp;
         myfile.close();
         tmp = "";
-        for (int i = 0; text[i] != '#'; i++)
-            tmp += text[i];
+        int index = 0;
+        for (; text[index] != '#'; index++);
+        for(index += 1; index < text.size(); index++)
+            tmp += text[index];
         text = tmp;
     }
     else
@@ -38,19 +40,17 @@ int parse_tree(std::string& name, std::string& text) {
 
 int parse_binary_text(std::string& name, std::string& text) {
     std::ifstream myfile(name, std::ios::binary);
-
-    unsigned int tmp = 0;
     std::stringstream input;
     if (myfile.is_open()) {
-        while (tmp != '#')
-            tmp = myfile.get();
-        while (!myfile.eof()) {
-            tmp = myfile.get();
-            if (tmp == UINT_MAX)
+        char c;
+        while (myfile.get(c)) {
+            if (c == '#')
                 break;
-            input << std::hex << tmp;
+            for (int i = 7; i >= 0; i--)
+                input << ((c >> i) & 1);
         }
         text = input.str();
+        return 1;
     }
     else
         return 0;
@@ -61,18 +61,6 @@ std::string gen_filename(std::string original) {
         original.pop_back();
 
     return original + " - encoded.txt";
-}
-
-void save_in_binary(std::string& str, std::ofstream& outfile) {
-    char buf[3];
-    buf[2] = 0;
-
-    std::stringstream input(str);
-    input.flags(std::ios_base::hex);
-    while (input >> buf[0] >> buf[1]) {
-        long val = strtol(buf, nullptr, 16);
-        outfile << static_cast<unsigned char>(val & 0xff);
-    }
 }
 
 void writeBinaryTree(Node* node, std::string& result) {
