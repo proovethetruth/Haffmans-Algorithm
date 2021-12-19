@@ -4,27 +4,6 @@
 #include <fstream>
 #include <queue>
 
-int current_bit = 0;
-void WriteBit(int bit, std::ostream& outfile) {
-	static unsigned char bit_buffer;
-	bit_buffer <<= 1;
-	if (bit)
-		bit_buffer |= 0x1;
-
-	current_bit++;
-	if (current_bit == 8) {
-		outfile.write((char*)&bit_buffer, sizeof(bit_buffer));
-		current_bit = 0;
-		bit_buffer = 0;
-	}
-}
-
-void Flush_Bits(std::ostream& outfile) {
-	while (current_bit) {
-		WriteBit(0, outfile);
-	}
-}
-
 Node* addNode(char ch, int freq, Node* left, Node* right) {
 	Node* node = new Node();
 
@@ -52,9 +31,9 @@ int pack(std::string& name) {
 	}
 
 	Node* root = build_tree(freq);
+
 	std::unordered_map<char, std::string> huffmanCode;
 	encode(root, "", huffmanCode);
-
 	std::cout << "\n\n Huffman Codes are: ";
 	for (auto pair : huffmanCode)
 		std::cout << "\n " << pair.first << " " << pair.second;
@@ -75,10 +54,7 @@ int pack(std::string& name) {
 	outfile << "#";
 	outfile << tree;
 
-	for(int i = 0; i < str.size(); i++)
-		WriteBit(str[i] - '0', outfile);
-	Flush_Bits(outfile);
-
+	writeBinaryString(outfile, str);
 	outfile.close();
 }
 

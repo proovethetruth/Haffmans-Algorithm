@@ -37,6 +37,10 @@ int check_task(char* argv[]);
 std::string gen_filename(std::string original);
 void insert_zeros_counter(std::ofstream& outfile, int bits);
 
+void writeBinaryString(std::ofstream& outfile, std::string& str);
+void WriteBit(int bit, std::ostream& outfile);
+void Flush_Bits(std::ostream& outfile);
+
 void writeBinaryTree(Node* node, std::string& result);
 Node* readBinaryTree(std::string& str, int& index);
 
@@ -45,9 +49,6 @@ int parse_tree(std::ifstream& infile, std::string& text);
 void parse_binary_text(std::ifstream& infile, std::string& text, int tree_size, int zeros);
 
 // encode.cpp
-void WriteBit(int bit, std::ostream& outfile);
-void Flush_Bits(std::ostream& outfile);
-
 Node* addNode(char ch, int freq, Node* left, Node* right);
 int pack(std::string& name);
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);

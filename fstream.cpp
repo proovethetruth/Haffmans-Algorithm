@@ -18,6 +18,33 @@ void insert_zeros_counter(std::ofstream& outfile, int bits) {
     outfile << bits;
 }
 
+void writeBinaryString(std::ofstream& outfile, std::string& str) {
+    for (int i = 0; i < str.size(); i++)
+        WriteBit(str[i] - '0', outfile);
+    Flush_Bits(outfile);
+}
+
+int current_bit = 0;
+void WriteBit(int bit, std::ostream& outfile) {
+    static unsigned char bit_buffer;
+    bit_buffer <<= 1;
+    if (bit)
+        bit_buffer |= 0x1;
+
+    current_bit++;
+    if (current_bit == 8) {
+        outfile.write((char*)&bit_buffer, sizeof(bit_buffer));
+        current_bit = 0;
+        bit_buffer = 0;
+    }
+}
+
+void Flush_Bits(std::ostream& outfile) {
+    while (current_bit) {
+        WriteBit(0, outfile);
+    }
+}
+
 
 void writeBinaryTree(Node* node, std::string& result) {
     if (!node->left && !node->right) {
