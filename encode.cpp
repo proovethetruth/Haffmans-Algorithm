@@ -59,7 +59,10 @@ void build_tree(std::string& text, std::string& name) {
 
 	for(int i = 0; i < str.size(); i++)
 		WriteBit(str[i] - '0', outfile);
-	Flush_Bits(outfile);
+	int zeros = Flush_Bits(outfile);
+	std::cout << "\n '0'-bits added: " << zeros;
+	outfile << "#";
+	outfile << zeros;
 
 	std::cout << "\n Binary code: " << str;
 
@@ -68,6 +71,7 @@ void build_tree(std::string& text, std::string& name) {
 	std::cout << "\n Tree transcription: " << str;
 	str = "#" + str;
 	outfile << str;
+
 	outfile.close();
 }
 
@@ -86,9 +90,13 @@ void WriteBit(int bit, std::ostream& outfile) {
 	}
 }
 
-void Flush_Bits(std::ostream& outfile) {
-	while (current_bit)
+int Flush_Bits(std::ostream& outfile) {
+	int count = 0;
+	while (current_bit) {
 		WriteBit(0, outfile);
+		count++;
+	}
+	return count;
 }
 
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode) {

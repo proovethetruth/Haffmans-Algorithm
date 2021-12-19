@@ -29,7 +29,8 @@ int parse_tree(std::string& name, std::string& text) {
         tmp = "";
         int index = 0;
         for (; text[index] != '#'; index++);
-        for(index += 1; index < text.size(); index++)
+        for (index++; text[index] != '#'; index++);
+        for(index++; index < text.size(); index++)
             tmp += text[index];
         text = tmp;
     }
@@ -50,6 +51,10 @@ int parse_binary_text(std::string& name, std::string& text) {
                 input << ((c >> i) & 1);
         }
         text = input.str();
+
+        myfile.get(c);
+        for (int i = 0; i < c - '0'; i++)
+            text.pop_back();
         return 1;
     }
     else

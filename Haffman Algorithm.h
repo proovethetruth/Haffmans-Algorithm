@@ -52,5 +52,5 @@ void encode(Node* root, std::string str, std::unordered_map<char, std::string>& 
 void decode(Node* root, int& index, std::string str);
 
 void WriteBit(int bit, std::ostream& outfile);
-void Flush_Bits(std::ostream& outfile);
+int Flush_Bits(std::ostream& outfile);
 #endif
