@@ -43,7 +43,7 @@ int pack(std::string& name) {
 		str += huffmanCode[ch];
 	std::cout << "\n Binary code: " << str;
 
-	std::ofstream outfile(gen_filename(name), std::ios::binary);
+	std::ofstream outfile(gen_en_filename(name), std::ios::binary);
 
 	insert_zeros_counter(outfile, str.size());
 

@@ -22,24 +22,25 @@ int unpack(std::string& name) {
     int index = 0;
     Node* root = readBinaryTree(tree, index);
 
+    std::ofstream outfile(gen_de_filename(name));
     std::cout << "\n\n Decoded text:\n";
     index = -1;
     while (index < (int)text.size() - 1)
-        decode(root, index, text);
+        decode(root, index, text, outfile);
 }
 
-void decode(Node* root, int& index, std::string str) {
+void decode(Node* root, int& index, std::string str, std::ofstream& outfile) {
 	if (root == nullptr)
 		return;
 
 	if (!root->left && !root->right) {
-		std::cout << root->ch;
+		outfile << root->ch;
 		return;
 	}
 	index++;
 
 	if (str[index] == '0')
-		decode(root->left, index, str);
+		decode(root->left, index, str, outfile);
 	else
-		decode(root->right, index, str);
+		decode(root->right, index, str, outfile);
 }

@@ -34,7 +34,8 @@ struct comp {
 int check_task(char* argv[]);
 
 // fstream.cpp
-std::string gen_filename(std::string original);
+std::string gen_en_filename(std::string original);
+std::string gen_de_filename(std::string original);
 void insert_zeros_counter(std::ofstream& outfile, int bits);
 
 void writeBinaryString(std::ofstream& outfile, std::string& str);
@@ -58,6 +59,6 @@ Node* build_tree(std::unordered_map<char, int> freq);
 
 // decode.cpp
 int unpack(std::string& name);
-void decode(Node* root, int& index, std::string str);
+void decode(Node* root, int& index, std::string str, std::ofstream& outfile);
 
 #endif

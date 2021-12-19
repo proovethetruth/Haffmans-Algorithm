@@ -5,15 +5,24 @@
 #include <iomanip>
 #include <sstream>
 
-std::string gen_filename(std::string original) {
+std::string gen_en_filename(std::string original) {
     for (int i = 0; i < 4; i++)
         original.pop_back();
 
     return original + " - encoded.txt";
 }
 
+std::string gen_de_filename(std::string original) {
+    for (int i = 0; i < 14; i++)
+        original.pop_back();
+
+    return original + " - decoded.txt";
+}
+
 void insert_zeros_counter(std::ofstream& outfile, int bits) {
     bits = 8 - (bits % 8);
+    if (bits == 8)
+        bits = 0;
     std::cout << "\n '0'-bits added: " << bits;
     outfile << bits;
 }
@@ -116,7 +125,6 @@ void parse_binary_text(std::ifstream& infile, std::string& text, int tree_size, 
 		for (int i = 7; i >= 0; i--)
 			input << ((c >> i) & 1);
 	}
-
 	text = input.str();
 	for (int i = 0; i < zeros; i++)
 		text.pop_back();
