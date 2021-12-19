@@ -34,23 +34,29 @@ struct comp {
 int check_task(char* argv[]);
 
 // fstream.cpp
-int parse_file(std::string& name, std::string& text);
-int parse_tree(std::string& name, std::string& text);
-int parse_binary_text(std::string& name, std::string& text);
 std::string gen_filename(std::string original);
-void save_in_binary(std::string& str, std::ofstream& outfile);
+void insert_zeros_counter(std::ofstream& outfile, int bits);
+
 void writeBinaryTree(Node* node, std::string& result);
 Node* readBinaryTree(std::string& str, int& index);
 
+int parse_file(std::string& name, std::string& text);
+int parse_tree(std::ifstream& infile, std::string& text);
+void parse_binary_text(std::ifstream& infile, std::string& text, int tree_size, int zeros);
+
 // encode.cpp
+void WriteBit(int bit, std::ostream& outfile);
+void Flush_Bits(std::ostream& outfile);
+
 Node* addNode(char ch, int freq, Node* left, Node* right);
-void build_tree(std::string& text, std::string& name);
+int pack(std::string& name);
 void encode(Node* root, std::string str, std::unordered_map<char, std::string>& huffmanCode);
 
+std::unordered_map<char, int> find_frequency(std::string& text);
+Node* build_tree(std::unordered_map<char, int> freq);
 
 // decode.cpp
+int unpack(std::string& name);
 void decode(Node* root, int& index, std::string str);
 
-void WriteBit(int bit, std::ostream& outfile);
-int Flush_Bits(std::ostream& outfile);
 #endif

@@ -8,8 +8,6 @@
 
 #include "Haffman Algorithm.h"
 #include <iostream>
-#include <fstream>
-
 
 int check_task(char* argv[]) {
     if (!argv[1] || !argv[2] || argv[1] == 0 || argv[2] == 0)
@@ -35,36 +33,14 @@ int main(int argc, char* argv[]) {
 
     std::cout << "\n\t HAFFMAN'S CODE";
     std::string name(argv[1]);
-    std::string text;
 
     if (task_id == 1) {
-        if (!parse_file(name, text)) {
-            std::cout << "\n Unable to open file ";
+        if (!pack(name))
             return -2;
-        }
-        build_tree(text, name);
     }
     if (strcmp(argv[2], "-de") == 0) {
-        if (!parse_binary_text(name, text)) {
-            std::cout << "\n Unable to open binary file ";
+        if (!unpack(name))
             return -2;
-        }
-        std::cout << "\n Binary text: " << text;
-
-        std::string tree;
-        if (!parse_tree(name, tree)) {
-            std::cout << "\n Unable to open binary file ";
-            return -2;
-        }
-        std::cout << "\n Tree origin: " << tree;
-
-        int index = 0;
-        Node* root = readBinaryTree(tree, index);
-
-        std::cout << "\n\n Decoded text:\n";
-        index = -1;
-        while (index < (int)text.size() - 1)
-            decode(root, index, text);
     }
 	return 0;
 }
