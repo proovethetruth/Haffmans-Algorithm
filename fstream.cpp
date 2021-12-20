@@ -1,4 +1,9 @@
 
+/*!
+    \file
+    \brief Файл содержащий реализации функций, необходимых для работы с файлами
+*/
+
 #include "Haffman Algorithm.h"
 #include <fstream>
 #include <iostream>

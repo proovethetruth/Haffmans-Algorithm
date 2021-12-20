@@ -1,5 +1,11 @@
 
+/*!
+	\file
+	\brief Файл содержащий реализации функций, необходимых для кодирования
+*/
+
 #include "Haffman Algorithm.h"
+#include <utility>
 #include <iostream>
 #include <fstream>
 #include <queue>
@@ -21,6 +27,10 @@ int pack(std::string& name) {
 		std::cout << "\n Unable to open file ";
 		return 0;
 	}
+	if (text == "") {
+		std::cout << "\n File is empty ";
+		return 0;
+	}
 	std::cout << "\n\n Source text:\n" << text << "\n";
 
 	std::unordered_map<char, int> freq = find_frequency(text);
@@ -34,6 +44,10 @@ int pack(std::string& name) {
 
 	std::unordered_map<char, std::string> huffmanCode;
 	encode(root, "", huffmanCode);
+	if (huffmanCode.size() == 1) {
+		huffmanCode.clear();
+		huffmanCode.insert(std::make_pair(text[0], "1"));
+	}
 	std::cout << "\n\n Huffman Codes are: ";
 	for (auto pair : huffmanCode)
 		std::cout << "\n " << pair.first << " " << pair.second;

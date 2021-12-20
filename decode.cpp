@@ -1,4 +1,9 @@
 
+/*!
+    \file
+    \brief Файл содержащий реализации функций, необходимых для декодирования
+*/
+
 #include "Haffman Algorithm.h"
 #include <iostream>
 #include <fstream>
@@ -24,9 +29,17 @@ int unpack(std::string& name) {
 
     std::ofstream outfile(gen_de_filename(name));
     std::cout << "\n\n Decoded text:\n";
-    index = -1;
-    while (index < (int)text.size() - 1)
-        decode(root, index, text, outfile);
+    if (tree_size != 2) {
+        index = -1;
+        while (index < (int)text.size() - 1)
+            decode(root, index, text, outfile);
+    }
+    else {
+        for (int i = 0; i < text.size(); i++) {
+            std::cout << root->ch;
+            outfile << root->ch;
+        }
+    }
 }
 
 void decode(Node* root, int& index, std::string str, std::ofstream& outfile) {
@@ -35,6 +48,7 @@ void decode(Node* root, int& index, std::string str, std::ofstream& outfile) {
 
 	if (!root->left && !root->right) {
 		outfile << root->ch;
+        //std::cout << root->ch;
 		return;
 	}
 	index++;
