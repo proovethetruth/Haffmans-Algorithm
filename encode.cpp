@@ -32,7 +32,6 @@ int pack(std::string& name) {
 		return 0;
 	}
 	std::cout << "\n\n Source text:\n" << text << "\n";
-
 	std::unordered_map<char, int> freq = find_frequency(text);
 	std::cout << "\n Found characters frequency: ";
 	for (auto& it : freq) {
@@ -44,10 +43,6 @@ int pack(std::string& name) {
 
 	std::unordered_map<char, std::string> huffmanCode;
 	encode(root, "", huffmanCode);
-	if (huffmanCode.size() == 1) {
-		huffmanCode.clear();
-		huffmanCode.insert(std::make_pair(text[0], "1"));
-	}
 	std::cout << "\n\n Huffman Codes are: ";
 	for (auto pair : huffmanCode)
 		std::cout << "\n " << pair.first << " " << pair.second;
@@ -55,7 +50,7 @@ int pack(std::string& name) {
 	std::string str;
 	for (char ch : text)
 		str += huffmanCode[ch];
-	std::cout << "\n Binary code: " << str;
+	//std::cout << "\n Binary code: " << str;
 
 	std::ofstream outfile(gen_en_filename(name), std::ios::binary);
 

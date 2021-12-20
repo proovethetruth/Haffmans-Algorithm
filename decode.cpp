@@ -29,17 +29,10 @@ int unpack(std::string& name) {
 
     std::ofstream outfile(gen_de_filename(name));
     std::cout << "\n\n Decoded text:\n";
-    if (tree_size != 2) {
-        index = -1;
-        while (index < (int)text.size() - 1)
-            decode(root, index, text, outfile);
-    }
-    else {
-        for (int i = 0; i < text.size(); i++) {
-            std::cout << root->ch;
-            outfile << root->ch;
-        }
-    }
+    index = -1;
+    while (index < (int)text.size() - 1)
+        decode(root, index, text, outfile);
+    outfile.close();
 }
 
 void decode(Node* root, int& index, std::string str, std::ofstream& outfile) {

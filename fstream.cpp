@@ -89,7 +89,8 @@ int parse_file(std::string& name, std::string& text) {
     std::ifstream myfile(name);
     if (myfile.is_open()) {
         while (getline(myfile, tmp))
-            text += tmp;
+            text += tmp + '\n';
+        text.pop_back();
         myfile.close();
     }
     else
@@ -100,7 +101,7 @@ int parse_file(std::string& name, std::string& text) {
 int parse_tree(std::ifstream& infile, std::string& text) {
 	std::string tmp;
 	while (getline(infile, tmp))
-		text += tmp;
+		text += tmp + '\n';
 	tmp.clear();
 
     for (int i = 0; text[i] != '#'; i++)
