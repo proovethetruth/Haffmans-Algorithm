@@ -89,7 +89,7 @@ Node* readBinaryTree(std::string& str, int& index) {
 
 int parse_file(std::string& name, std::string& text) {
     std::string tmp = "";
-    std::ifstream myfile(name);
+    std::ifstream myfile(name, std::ios::binary);
     if (myfile.is_open()) {
         while (getline(myfile, tmp))
             text += tmp + '\n';
