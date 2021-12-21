@@ -1,7 +1,7 @@
 
 /*!
 	\file
-	\brief Файл содержащий реализации функций, необходимых для кодирования
+	\brief Файл, содержащий основные функции архивации
 */
 
 #include "Haffman Algorithm.h"
@@ -31,21 +31,21 @@ int pack(std::string& name) {
 		std::cout << "\n File is empty ";
 		return 0;
 	}
-	std::cout << "\n\n Source text:\n" << text << "\n";
+	//std::cout << "\n\n Source text:\n" << text << "\n";
 	std::unordered_map<char, int> freq = find_frequency(text);
 	std::cout << "\n Found characters frequency: ";
-	for (auto& it : freq) {
+	/*for (auto& it : freq) {
 		std::cout << "\n " << it.first;
 		std::cout << " " << it.second;
-	}
+	}*/
 
 	Node* root = build_tree(freq);
 
 	std::unordered_map<char, std::string> huffmanCode;
 	encode(root, "", huffmanCode);
 	std::cout << "\n\n Huffman Codes are: ";
-	for (auto pair : huffmanCode)
-		std::cout << "\n " << pair.first << " " << pair.second;
+	/*for (auto pair : huffmanCode)
+		std::cout << "\n " << pair.first << " " << pair.second;*/
 
 	std::string str;
 	for (char ch : text)
@@ -58,7 +58,7 @@ int pack(std::string& name) {
 
 	std::string tree;
 	writeBinaryTree(root, tree);
-	std::cout << "\n Tree transcription: " << tree << std::endl;
+	//std::cout << "\n Tree transcription: " << tree << std::endl;
 	outfile << tree.size();
 	outfile << "#";
 	outfile << tree;

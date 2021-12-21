@@ -67,466 +67,67 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">fstream.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Файл содержащий реализации функций, необходимых для работы с файлами  
+<p>Файл, содержащий основные функции для работы с файлами  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_haffman_01_algorithm_8h_source.html">Haffman Algorithm.h</a>&quot;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;iomanip&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aaa4e3edd41f9b13a051b7cb691e96e00"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#aaa4e3edd41f9b13a051b7cb691e96e00">gen_en_filename</a> (std::string original)</td></tr>
-<tr class="memdesc:aaa4e3edd41f9b13a051b7cb691e96e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации имени сжатого файла  <a href="fstream_8cpp.html#aaa4e3edd41f9b13a051b7cb691e96e00">More...</a><br /></td></tr>
-<tr class="separator:aaa4e3edd41f9b13a051b7cb691e96e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0aacc725ecb0dba38ce5fe6b1724284c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#a0aacc725ecb0dba38ce5fe6b1724284c">gen_de_filename</a> (std::string original)</td></tr>
-<tr class="memdesc:a0aacc725ecb0dba38ce5fe6b1724284c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации имени разархивированного файла  <a href="fstream_8cpp.html#a0aacc725ecb0dba38ce5fe6b1724284c">More...</a><br /></td></tr>
-<tr class="separator:a0aacc725ecb0dba38ce5fe6b1724284c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8fb5820afd35764bb24e93ad264511a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#af8fb5820afd35764bb24e93ad264511a">insert_zeros_counter</a> (std::ofstream &amp;outfile, int bits)</td></tr>
-<tr class="memdesc:af8fb5820afd35764bb24e93ad264511a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для записи кол-ва дополнительных нулей в бинарный файл  <a href="fstream_8cpp.html#af8fb5820afd35764bb24e93ad264511a">More...</a><br /></td></tr>
-<tr class="separator:af8fb5820afd35764bb24e93ad264511a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae02d5d4d8c39f3e99d3e04a718956fd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#ae02d5d4d8c39f3e99d3e04a718956fd8">writeBinaryString</a> (std::ofstream &amp;outfile, std::string &amp;str)</td></tr>
-<tr class="memdesc:ae02d5d4d8c39f3e99d3e04a718956fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для записи битовой строки в бинарный файл  <a href="fstream_8cpp.html#ae02d5d4d8c39f3e99d3e04a718956fd8">More...</a><br /></td></tr>
-<tr class="separator:ae02d5d4d8c39f3e99d3e04a718956fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d26c2fb9840b4e222cb168bc6f3d7ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#a3d26c2fb9840b4e222cb168bc6f3d7ee">WriteBit</a> (int bit, std::ostream &amp;outfile)</td></tr>
-<tr class="memdesc:a3d26c2fb9840b4e222cb168bc6f3d7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для записи байта в бинарный файл  <a href="fstream_8cpp.html#a3d26c2fb9840b4e222cb168bc6f3d7ee">More...</a><br /></td></tr>
-<tr class="separator:a3d26c2fb9840b4e222cb168bc6f3d7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60c2e89cbd624af7ae1148ab4137d235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#a60c2e89cbd624af7ae1148ab4137d235">Flush_Bits</a> (std::ostream &amp;outfile)</td></tr>
-<tr class="memdesc:a60c2e89cbd624af7ae1148ab4137d235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для вставки дополнительных нулей  <a href="fstream_8cpp.html#a60c2e89cbd624af7ae1148ab4137d235">More...</a><br /></td></tr>
-<tr class="separator:a60c2e89cbd624af7ae1148ab4137d235"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1eef9aec8e4bc048f6100e481f99ad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#ac1eef9aec8e4bc048f6100e481f99ad3">writeBinaryTree</a> (<a class="el" href="struct_node.html">Node</a> *node, std::string &amp;result)</td></tr>
-<tr class="memdesc:ac1eef9aec8e4bc048f6100e481f99ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации строковой репрезентации бинарного дерева Хаффмана  <a href="fstream_8cpp.html#ac1eef9aec8e4bc048f6100e481f99ad3">More...</a><br /></td></tr>
-<tr class="separator:ac1eef9aec8e4bc048f6100e481f99ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0d3bfdb204e30de6b6833e1415d39c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#ac0d3bfdb204e30de6b6833e1415d39c8">readBinaryTree</a> (std::string &amp;str, int &amp;index)</td></tr>
-<tr class="memdesc:ac0d3bfdb204e30de6b6833e1415d39c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации бинарного дерева Хаффмана на основе его строковой репрезентации  <a href="fstream_8cpp.html#ac0d3bfdb204e30de6b6833e1415d39c8">More...</a><br /></td></tr>
-<tr class="separator:ac0d3bfdb204e30de6b6833e1415d39c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4de3d978261162c370c09a057609be1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#ac4de3d978261162c370c09a057609be1">parse_file</a> (std::string &amp;name, std::string &amp;text)</td></tr>
-<tr class="memdesc:ac4de3d978261162c370c09a057609be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для считывания исходного текста  <a href="fstream_8cpp.html#ac4de3d978261162c370c09a057609be1">More...</a><br /></td></tr>
-<tr class="separator:ac4de3d978261162c370c09a057609be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29932639a36ec78375e301ffe1e3e9fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#a29932639a36ec78375e301ffe1e3e9fe">parse_tree</a> (std::ifstream &amp;infile, std::string &amp;text)</td></tr>
-<tr class="memdesc:a29932639a36ec78375e301ffe1e3e9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для считывания строковой репрезентации дерева из бинарного файла  <a href="fstream_8cpp.html#a29932639a36ec78375e301ffe1e3e9fe">More...</a><br /></td></tr>
-<tr class="separator:a29932639a36ec78375e301ffe1e3e9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93fe831c5c78c54f5ae8c24f62750162"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#a93fe831c5c78c54f5ae8c24f62750162">parse_binary_text</a> (std::ifstream &amp;infile, std::string &amp;text, int tree_size, int zeros)</td></tr>
-<tr class="memdesc:a93fe831c5c78c54f5ae8c24f62750162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для считывания байтов текста из бинарного файла  <a href="fstream_8cpp.html#a93fe831c5c78c54f5ae8c24f62750162">More...</a><br /></td></tr>
-<tr class="separator:a93fe831c5c78c54f5ae8c24f62750162"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aeb9cb8c5bcc483330c3051a1b37b826c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#aeb9cb8c5bcc483330c3051a1b37b826c">current_bit</a> = 0</td></tr>
-<tr class="separator:aeb9cb8c5bcc483330c3051a1b37b826c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa4e3edd41f9b13a051b7cb691e96e00"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#gaaa4e3edd41f9b13a051b7cb691e96e00">gen_en_filename</a> (std::string original)</td></tr>
+<tr class="memdesc:gaaa4e3edd41f9b13a051b7cb691e96e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации имени сжатого файла  <a href="group__fstream__functions.html#gaaa4e3edd41f9b13a051b7cb691e96e00">More...</a><br /></td></tr>
+<tr class="separator:gaaa4e3edd41f9b13a051b7cb691e96e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0aacc725ecb0dba38ce5fe6b1724284c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#ga0aacc725ecb0dba38ce5fe6b1724284c">gen_de_filename</a> (std::string original)</td></tr>
+<tr class="memdesc:ga0aacc725ecb0dba38ce5fe6b1724284c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации имени разархивированного файла  <a href="group__fstream__functions.html#ga0aacc725ecb0dba38ce5fe6b1724284c">More...</a><br /></td></tr>
+<tr class="separator:ga0aacc725ecb0dba38ce5fe6b1724284c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28d7a17897f452de00c214634331991a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fstream_8cpp.html#a28d7a17897f452de00c214634331991a">check_extension</a> (std::string &amp;name)</td></tr>
+<tr class="separator:a28d7a17897f452de00c214634331991a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8fb5820afd35764bb24e93ad264511a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#gaf8fb5820afd35764bb24e93ad264511a">insert_zeros_counter</a> (std::ofstream &amp;outfile, int bits)</td></tr>
+<tr class="memdesc:gaf8fb5820afd35764bb24e93ad264511a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для записи кол-ва дополнительных нулей в бинарный файл  <a href="group__fstream__functions.html#gaf8fb5820afd35764bb24e93ad264511a">More...</a><br /></td></tr>
+<tr class="separator:gaf8fb5820afd35764bb24e93ad264511a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae02d5d4d8c39f3e99d3e04a718956fd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#gae02d5d4d8c39f3e99d3e04a718956fd8">writeBinaryString</a> (std::ofstream &amp;outfile, std::string &amp;str)</td></tr>
+<tr class="memdesc:gae02d5d4d8c39f3e99d3e04a718956fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для записи битовой строки в бинарный файл  <a href="group__fstream__functions.html#gae02d5d4d8c39f3e99d3e04a718956fd8">More...</a><br /></td></tr>
+<tr class="separator:gae02d5d4d8c39f3e99d3e04a718956fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1eef9aec8e4bc048f6100e481f99ad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#gac1eef9aec8e4bc048f6100e481f99ad3">writeBinaryTree</a> (<a class="el" href="struct_node.html">Node</a> *node, std::string &amp;result)</td></tr>
+<tr class="memdesc:gac1eef9aec8e4bc048f6100e481f99ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации строковой репрезентации бинарного дерева Хаффмана  <a href="group__fstream__functions.html#gac1eef9aec8e4bc048f6100e481f99ad3">More...</a><br /></td></tr>
+<tr class="separator:gac1eef9aec8e4bc048f6100e481f99ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0d3bfdb204e30de6b6833e1415d39c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#gac0d3bfdb204e30de6b6833e1415d39c8">readBinaryTree</a> (std::string &amp;str, int &amp;index)</td></tr>
+<tr class="memdesc:gac0d3bfdb204e30de6b6833e1415d39c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для генерации бинарного дерева Хаффмана на основе его строковой репрезентации  <a href="group__fstream__functions.html#gac0d3bfdb204e30de6b6833e1415d39c8">More...</a><br /></td></tr>
+<tr class="separator:gac0d3bfdb204e30de6b6833e1415d39c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac4de3d978261162c370c09a057609be1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#gac4de3d978261162c370c09a057609be1">parse_file</a> (std::string &amp;name, std::string &amp;text)</td></tr>
+<tr class="memdesc:gac4de3d978261162c370c09a057609be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для считывания исходного текста  <a href="group__fstream__functions.html#gac4de3d978261162c370c09a057609be1">More...</a><br /></td></tr>
+<tr class="separator:gac4de3d978261162c370c09a057609be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29932639a36ec78375e301ffe1e3e9fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#ga29932639a36ec78375e301ffe1e3e9fe">parse_tree</a> (std::ifstream &amp;infile, std::string &amp;text)</td></tr>
+<tr class="memdesc:ga29932639a36ec78375e301ffe1e3e9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для считывания строковой репрезентации дерева из бинарного файла  <a href="group__fstream__functions.html#ga29932639a36ec78375e301ffe1e3e9fe">More...</a><br /></td></tr>
+<tr class="separator:ga29932639a36ec78375e301ffe1e3e9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga93fe831c5c78c54f5ae8c24f62750162"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fstream__functions.html#ga93fe831c5c78c54f5ae8c24f62750162">parse_binary_text</a> (std::ifstream &amp;infile, std::string &amp;text, int tree_size, int zeros)</td></tr>
+<tr class="memdesc:ga93fe831c5c78c54f5ae8c24f62750162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для считывания байтов текста из бинарного файла  <a href="group__fstream__functions.html#ga93fe831c5c78c54f5ae8c24f62750162">More...</a><br /></td></tr>
+<tr class="separator:ga93fe831c5c78c54f5ae8c24f62750162"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Файл содержащий реализации функций, необходимых для работы с файлами </p>
+<div class="textblock"><p >Файл, содержащий основные функции для работы с файлами </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a60c2e89cbd624af7ae1148ab4137d235" name="a60c2e89cbd624af7ae1148ab4137d235"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60c2e89cbd624af7ae1148ab4137d235">&#9670;&nbsp;</a></span>Flush_Bits()</h2>
+<a id="a28d7a17897f452de00c214634331991a" name="a28d7a17897f452de00c214634331991a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28d7a17897f452de00c214634331991a">&#9670;&nbsp;</a></span>check_extension()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Flush_Bits </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>outfile</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для вставки дополнительных нулей </p>
-<p >Функция <a class="el" href="_haffman_01_algorithm_8h.html#ae02d5d4d8c39f3e99d3e04a718956fd8" title="Функция для записи битовой строки в бинарный файл">writeBinaryString()</a> может не записать биты, в случае если исходная последовательность не делится без остатка на ноль. Для того, чтобы избежать эту ошибку последний байт заполняется недостающими нулями </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">outfile</td><td>файл, открытый в бинарном режиме </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a0aacc725ecb0dba38ce5fe6b1724284c" name="a0aacc725ecb0dba38ce5fe6b1724284c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0aacc725ecb0dba38ce5fe6b1724284c">&#9670;&nbsp;</a></span>gen_de_filename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string gen_de_filename </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>original</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для генерации имени разархивированного файла </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">original</td><td>Название исходного файла </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Строка с названием для разархивиронных файлов </dd></dl>
-
-</div>
-</div>
-<a id="aaa4e3edd41f9b13a051b7cb691e96e00" name="aaa4e3edd41f9b13a051b7cb691e96e00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa4e3edd41f9b13a051b7cb691e96e00">&#9670;&nbsp;</a></span>gen_en_filename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string gen_en_filename </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>original</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для генерации имени сжатого файла </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">original</td><td>Название исходного файла </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Строка с названием для сжатых файлов </dd></dl>
-
-</div>
-</div>
-<a id="af8fb5820afd35764bb24e93ad264511a" name="af8fb5820afd35764bb24e93ad264511a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8fb5820afd35764bb24e93ad264511a">&#9670;&nbsp;</a></span>insert_zeros_counter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void insert_zeros_counter </td>
-          <td>(</td>
-          <td class="paramtype">std::ofstream &amp;&#160;</td>
-          <td class="paramname"><em>outfile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bits</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для записи кол-ва дополнительных нулей в бинарный файл </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">outfile</td><td>файл, открытый в бинарном режиме </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bits</td><td>Кол-во дополнительных нулей (0 &lt;= bits &lt; 8) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a93fe831c5c78c54f5ae8c24f62750162" name="a93fe831c5c78c54f5ae8c24f62750162"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93fe831c5c78c54f5ae8c24f62750162">&#9670;&nbsp;</a></span>parse_binary_text()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void parse_binary_text </td>
-          <td>(</td>
-          <td class="paramtype">std::ifstream &amp;&#160;</td>
-          <td class="paramname"><em>infile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>text</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>tree_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>zeros</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для считывания байтов текста из бинарного файла </p>
-<p >В заархивированном файле первый символ означает кол-во дополнительных нулей вставленных функцией <a class="el" href="_haffman_01_algorithm_8h.html#a60c2e89cbd624af7ae1148ab4137d235" title="Функция для вставки дополнительных нулей">Flush_Bits()</a>. Следующее за ним число - длина строковой репрезентации дерева. Затем следует разделительный символ, непосредственно строковая репрезентация дерева, и сжатый текст. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">infile</td><td>Ссылка на файл, открытый в двоичном режиме </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>Ссылка на строку, в которую будет сохранён результат </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tree_size</td><td>Длина строковой репрезентации дерева </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">zeros</td><td>Кол-во дополнительных нулей </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac4de3d978261162c370c09a057609be1" name="ac4de3d978261162c370c09a057609be1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4de3d978261162c370c09a057609be1">&#9670;&nbsp;</a></span>parse_file()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int parse_file </td>
+          <td class="memname">int check_extension </td>
           <td>(</td>
           <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>text</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для считывания исходного текста </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Ссылка на имя файла </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>Ссылка на строку, в которую будет сохранён результат </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>При успешном считывании - 1, иначе - 0 </dd></dl>
-
-</div>
-</div>
-<a id="a29932639a36ec78375e301ffe1e3e9fe" name="a29932639a36ec78375e301ffe1e3e9fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29932639a36ec78375e301ffe1e3e9fe">&#9670;&nbsp;</a></span>parse_tree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int parse_tree </td>
-          <td>(</td>
-          <td class="paramtype">std::ifstream &amp;&#160;</td>
-          <td class="paramname"><em>infile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>text</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для считывания строковой репрезентации дерева из бинарного файла </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">infile</td><td>Ссылка на файл, открытый в двоичном режиме </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>Ссылка на строку, в которую будет сохранён результат </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Длина строковой репрезентации дерева </dd></dl>
-
-</div>
-</div>
-<a id="ac0d3bfdb204e30de6b6833e1415d39c8" name="ac0d3bfdb204e30de6b6833e1415d39c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0d3bfdb204e30de6b6833e1415d39c8">&#9670;&nbsp;</a></span>readBinaryTree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_node.html">Node</a> * readBinaryTree </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для генерации бинарного дерева Хаффмана на основе его строковой репрезентации </p>
-<p >Если текущий символ равен единице, это значит, что следующий за ней символ является листом </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>Ссылка на строку, в которой содержится строковая репрезентация дерева Хаффмана </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Ссылка на индекс </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Указатель на корень дерева </dd></dl>
-
-</div>
-</div>
-<a id="ae02d5d4d8c39f3e99d3e04a718956fd8" name="ae02d5d4d8c39f3e99d3e04a718956fd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae02d5d4d8c39f3e99d3e04a718956fd8">&#9670;&nbsp;</a></span>writeBinaryString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void writeBinaryString </td>
-          <td>(</td>
-          <td class="paramtype">std::ofstream &amp;&#160;</td>
-          <td class="paramname"><em>outfile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для записи битовой строки в бинарный файл </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">outfile</td><td>файл, открытый в бинарном режиме </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>битовая строка </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac1eef9aec8e4bc048f6100e481f99ad3" name="ac1eef9aec8e4bc048f6100e481f99ad3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1eef9aec8e4bc048f6100e481f99ad3">&#9670;&nbsp;</a></span>writeBinaryTree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void writeBinaryTree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_node.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>result</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для генерации строковой репрезентации бинарного дерева Хаффмана </p>
-<p >Для генерации строковой репрезентации дерева используется прямой обход (NLR). Если текущий узел является листом (не имеет потомков) , то в строку добавляется единица и символ этого узла. Если текущий узел не является листом, в строку записывается ноль и происходит рекурсивный вызов функции </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>Указатель на корень дерева </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">result</td><td>Ссылка на строку, в которой будет сохранён результат </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3d26c2fb9840b4e222cb168bc6f3d7ee" name="a3d26c2fb9840b4e222cb168bc6f3d7ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d26c2fb9840b4e222cb168bc6f3d7ee">&#9670;&nbsp;</a></span>WriteBit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void WriteBit </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>outfile</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Функция для записи байта в бинарный файл </p>
-<p >Эта функция упаковывает восемь битов в байт, затем записывает его в бинарный файл. Последний байт может оказаться незаполненным, ввиду чего использование этой функции требует последующего вызова функции FlushBits() для вставки дополнительных нулей </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">bit</td><td>бит (0 или 1) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">outfile</td><td>файл, открытый в бинарном режиме </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="aeb9cb8c5bcc483330c3051a1b37b826c" name="aeb9cb8c5bcc483330c3051a1b37b826c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb9cb8c5bcc483330c3051a1b37b826c">&#9670;&nbsp;</a></span>current_bit</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int current_bit = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">

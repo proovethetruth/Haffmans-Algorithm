@@ -1,7 +1,7 @@
 
 /*!
     \file
-    \brief Файл содержащий основную функцию main()
+    \brief Основной файл, содержащий main()
 */
 
 #include "Haffman Algorithm.h"

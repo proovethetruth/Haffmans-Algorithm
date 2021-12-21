@@ -4,7 +4,8 @@ var indexSectionsWithContent =
   1: "cn",
   2: "defhm",
   3: "abcdefgimnopruw",
-  4: "cflr"
+  4: "cflr",
+  5: "defm"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables"
+  4: "variables",
+  5: "groups"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Files",
   3: "Functions",
-  4: "Variables"
+  4: "Variables",
+  5: "Modules"
 };
 

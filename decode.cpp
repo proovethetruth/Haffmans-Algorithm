@@ -1,7 +1,7 @@
-
+п»ї
 /*!
     \file
-    \brief Файл содержащий реализации функций, необходимых для декодирования
+    \brief Р¤Р°Р№Р», СЃРѕРґРµСЂР¶Р°С‰РёР№ РѕСЃРЅРѕРІРЅС‹Рµ С„СѓРЅРєС†РёРё СЂР°Р·Р°СЂС…РёРІР°С†РёРё.
 */
 
 #include "Haffman Algorithm.h"
@@ -21,32 +21,29 @@ int unpack(std::string& name) {
     std::string text;
     parse_binary_text(infile, text, tree_size, zeros);
     infile.close();
-    std::cout << "\n Tree origin: " << tree;
-    std::cout << "\n Binary text: " << text;
+    //std::cout << "\n Tree origin: " << tree;
+    //std::cout << "\n Binary text: " << text;
 
     int index = 0;
     Node* root = readBinaryTree(tree, index);
 
     std::ofstream outfile(gen_de_filename(name));
     std::cout << "\n\n File is being decoded...\n";
-    index = -1;
-    while (index < (int)text.size() - 1)
-        decode(root, index, text, outfile);
+    decode(root, text, outfile);
     outfile.close();
 }
 
-void decode(Node* root, int& index, std::string str, std::ofstream& outfile) {
-	if (root == nullptr)
-		return;
+void decode(Node* root, std::string& str, std::ofstream& outfile) {
+    Node* tree_head = root;
+    for (int i = 0; i < str.size(); i++) {
+        if (str[i] - '0')
+            root = root->right;
+        else
+            root = root->left;
 
-	if (!root->left && !root->right) {
-		outfile << root->ch;
-		return;
-	}
-	index++;
-
-	if (str[index] == '0')
-		decode(root->left, index, str, outfile);
-	else
-		decode(root->right, index, str, outfile);
+        if (!root->left && !root->right) {
+            outfile << root->ch;
+            root = tree_head;
+        }
+    }
 }

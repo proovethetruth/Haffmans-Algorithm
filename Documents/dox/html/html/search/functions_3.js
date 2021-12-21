@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['decode_0',['decode',['../decode_8cpp.html#a254911580cf6ef39190c072ee2fc55f3',1,'decode(Node *root, int &amp;index, std::string str, std::ofstream &amp;outfile):&#160;decode.cpp'],['../_haffman_01_algorithm_8h.html#a254911580cf6ef39190c072ee2fc55f3',1,'decode(Node *root, int &amp;index, std::string str, std::ofstream &amp;outfile):&#160;decode.cpp']]]
+  ['decode_0',['decode',['../group__decode__functions.html#gac6c9fb12155eaef792b9f33f7ddcabe1',1,'decode(Node *root, std::string &amp;str, std::ofstream &amp;outfile):&#160;decode.cpp'],['../group__decode__functions.html#gac6c9fb12155eaef792b9f33f7ddcabe1',1,'decode(Node *root, std::string &amp;str, std::ofstream &amp;outfile):&#160;decode.cpp']]]
 ];
