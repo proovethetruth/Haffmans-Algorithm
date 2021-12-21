@@ -9,6 +9,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <vector>
 
 std::string gen_en_filename(std::string original) {
     original.insert(original.size() - 4, " - encoded");
@@ -43,6 +44,7 @@ void insert_zeros_counter(std::ofstream& outfile, int bits) {
 }
 
 void writeBinaryString(std::ofstream& outfile, std::string& str) {
+    std::vector<unsigned char> output;
     unsigned char bit_buffer = 0;
     int current_bit = 0;
     for (int i = 0; i < str.size(); i++) {
@@ -52,7 +54,7 @@ void writeBinaryString(std::ofstream& outfile, std::string& str) {
 
         current_bit++;
         if (current_bit == 8) {
-            outfile.write((char*)&bit_buffer, sizeof(bit_buffer));
+            outfile.put(bit_buffer);
             current_bit = 0;
             bit_buffer = 0;
         }
@@ -62,7 +64,7 @@ void writeBinaryString(std::ofstream& outfile, std::string& str) {
             bit_buffer <<= 1;
             current_bit++;
         }
-        outfile.write((char*)&bit_buffer, sizeof(bit_buffer));
+        outfile.put(bit_buffer);
     }
 }
 

@@ -52,7 +52,6 @@ struct comp {
 */
 int check_task(char* argv[]);
 
-// fstream.cpp
 /*!
 		\brief Функция для генерации имени сжатого файла
 		\param[in] original Название исходного файла
