@@ -11,17 +11,20 @@
 #include <sstream>
 
 std::string gen_en_filename(std::string original) {
-    for (int i = 0; i < 4; i++)
-        original.pop_back();
-
-    return original + " - encoded.txt";
+    original.insert(original.size() - 4, " - encoded");
+    return original;
 }
 
+//input6 - encoded.txt
 std::string gen_de_filename(std::string original) {
+    std::string extension;
+    for (int i = original.size() - 4; i < original.size(); i++)
+        extension += original[i];
+
     for (int i = 0; i < 14; i++)
         original.pop_back();
 
-    return original + " - decoded.txt";
+    return original + " - decoded" + extension;
 }
 
 void insert_zeros_counter(std::ofstream& outfile, int bits) {
