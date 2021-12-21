@@ -28,7 +28,7 @@ int unpack(std::string& name) {
     Node* root = readBinaryTree(tree, index);
 
     std::ofstream outfile(gen_de_filename(name));
-    std::cout << "\n\n Decoded text:\n";
+    std::cout << "\n\n File is being decoded...\n";
     index = -1;
     while (index < (int)text.size() - 1)
         decode(root, index, text, outfile);
@@ -41,7 +41,6 @@ void decode(Node* root, int& index, std::string str, std::ofstream& outfile) {
 
 	if (!root->left && !root->right) {
 		outfile << root->ch;
-        //std::cout << root->ch;
 		return;
 	}
 	index++;

@@ -27,6 +27,13 @@ std::string gen_de_filename(std::string original) {
     return original + " - decoded" + extension;
 }
 
+int check_extension(std::string& name) {
+    std::string extension;
+    for (int i = name.size() - 4; i < name.size(); i++)
+        extension += name[i];
+    return extension == ".txt" ? 1 : 0;
+}
+
 void insert_zeros_counter(std::ofstream& outfile, int bits) {
     bits = 8 - (bits % 8);
     if (bits == 8)
@@ -89,15 +96,28 @@ Node* readBinaryTree(std::string& str, int& index) {
 
 int parse_file(std::string& name, std::string& text) {
     std::string tmp = "";
-    std::ifstream myfile(name, std::ios::binary);
-    if (myfile.is_open()) {
-        while (getline(myfile, tmp))
-            text += tmp + '\n';
-        text.pop_back();
-        myfile.close();
+    if(check_extension(name)) {
+        std::ifstream myfile(name);
+        if (myfile.is_open()) {
+            while (getline(myfile, tmp))
+                text += tmp + '\n';
+            text.pop_back();
+            myfile.close();
+        }
+        else
+            return 0;
     }
-    else
-        return 0;
+    else {
+        std::ifstream myfile(name, std::ios::binary);
+        if (myfile.is_open()) {
+            while (getline(myfile, tmp))
+                text += tmp + '\n';
+            text.pop_back();
+            myfile.close();
+        }
+        else
+            return 0;
+    }
     return 1;
 }
 
